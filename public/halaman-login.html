@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halaman Login</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       DESKTOP / TABLET LAYOUT (hidden ≤768px)
+       Source: Figma node "Halaman Login" (1:2)
+       Note: this screen has no navigation bar in the Figma design,
+       so no navbar/hamburger menu has been added.
+       ============================================================ -->
+  <main class="login-page login-page--desktop">
+    <div class="login-page__main">
+      <section class="login-card" aria-labelledby="login-title">
+        <header class="login-card__header">
+          <div class="login-card__icon-box" aria-hidden="true">
+            <p class="login-card__icon-letter">L</p>
+          </div>
+          <h1 id="login-title" class="login-card__title">Nama web</h1>
+          <p class="login-card__subtitle">Kota Yogyakarta</p>
+        </header>
+
+        <form class="login-form" id="loginFormDesktop" novalidate>
+          <div class="login-form__field">
+            <label class="login-form__label" for="username-desktop">Username / Email</label>
+            <div class="login-form__input-wrap">
+              <input
+                class="login-form__input"
+                type="text"
+                id="username-desktop"
+                name="username"
+                placeholder="Masukkan username Anda"
+                autocomplete="username"
+              >
+              <span class="login-form__icon">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NW0xMS45NjMgMGE5IDkgMCAxIDAtMTEuOTYzIDBtMTEuOTYzIDBBOC45NjYgOC45NjYgMCAwIDEgMTIgMjFhOC45NjYgOC45NjYgMCAwIDEtNS45ODItMi4yNzVNMTUgOS43NWEzIDMgMCAxIDEtNiAwIDMgMyAwIDAgMSA2IDBaIi8+PC9zdmc+" alt="" width="13" height="13">
+              </span>
+            </div>
+          </div>
+
+          <div class="login-form__field login-form__field--password">
+            <label class="login-form__label" for="password-desktop">Password</label>
+            <div class="login-form__input-wrap">
+              <input
+                class="login-form__input login-form__input--password"
+                type="password"
+                id="password-desktop"
+                name="password"
+                placeholder="Masukkan kata sandi"
+                autocomplete="current-password"
+              >
+              <span class="login-form__icon">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTYuNSAxMC41VjYuNzVhNC41IDQuNSAwIDEgMC05IDB2My43NW0tLjc1IDExLjI1aDEwLjVhMi4yNSAyLjI1IDAgMCAwIDIuMjUtMi4yNXYtNi43NWEyLjI1IDIuMjUgMCAwIDAtMi4yNS0yLjI1SDYuNzVhMi4yNSAyLjI1IDAgMCAwLTIuMjUgMi4yNXY2Ljc1YTIuMjUgMi4yNSAwIDAgMCAyLjI1IDIuMjVaIi8+PC9zdmc+" alt="" width="13" height="16">
+              </span>
+              <button
+                type="button"
+                class="login-form__toggle password-toggle"
+                aria-label="Tampilkan kata sandi"
+                aria-pressed="false"
+                data-target="password-desktop"
+              >
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMi4wMzYgMTIuMzIyYTEuMDEyIDEuMDEyIDAgMCAxIDAtLjYzOUMzLjQyMyA3LjUxIDcuMzYgNC41IDEyIDQuNWM0LjYzOCAwIDguNTczIDMuMDA3IDkuOTYzIDcuMTc4LjA3LjIwNy4wNy40MzEgMCAuNjM5QzIwLjU3NyAxNi40OSAxNi42NCAxOS41IDEyIDE5LjVjLTQuNjM4IDAtOC41NzMtMy4wMDctOS45NjMtNy4xNzhaIi8+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTUgMTJhMyAzIDAgMSAxLTYgMCAzIDMgMCAwIDEgNiAwWiIvPjwvc3ZnPg==" alt="" width="17" height="12">
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="login-form__submit">
+            <span class="login-form__submit-text">Masuk</span>
+            <img class="login-form__submit-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZT0iI2ZmZmZmZiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuMjUgOC4yNSAyMSAxMm0wIDAtMy43NSAzLjc1TTIxIDEySDMiLz48L3N2Zz4=" alt="" width="11" height="11">
+          </button>
+        </form>
+
+        <footer class="login-card__footer">
+          <a class="login-card__link" href="#">Lupa kata sandi?</a>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       MOBILE LAYOUT (shown ≤768px)
+       Source: Figma node "Halaman Login (Web_Mobile)" (1:52)
+       ============================================================ -->
+  <main class="login-page--mobile">
+    <header class="login-mobile__header">
+      <div class="login-mobile__icon-box" aria-hidden="true">
+        <p class="login-mobile__icon-letter">L</p>
+      </div>
+      <h1 class="login-mobile__title">Nama Web</h1>
+      <p class="login-mobile__subtitle">Kabupaten Kudus</p>
+    </header>
+
+    <div class="login-mobile__main">
+      <div class="login-mobile__form-area">
+        <form class="login-mobile-form" id="loginFormMobile" novalidate>
+          <div class="login-mobile-form__field">
+            <label class="login-mobile-form__label" for="username-mobile">Username / Email</label>
+            <div class="login-mobile-form__input-wrap">
+              <input
+                class="login-mobile-form__input"
+                type="text"
+                id="username-mobile"
+                name="username"
+                placeholder="Masukkan username Anda"
+                autocomplete="username"
+              >
+              <span class="login-mobile-form__icon">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NW0xMS45NjMgMGE5IDkgMCAxIDAtMTEuOTYzIDBtMTEuOTYzIDBBOC45NjYgOC45NjYgMCAwIDEgMTIgMjFhOC45NjYgOC45NjYgMCAwIDEtNS45ODItMi4yNzVNMTUgOS43NWEzIDMgMCAxIDEtNiAwIDMgMyAwIDAgMSA2IDBaIi8+PC9zdmc+" alt="" width="16" height="16">
+              </span>
+            </div>
+          </div>
+
+          <div class="login-mobile-form__field login-mobile-form__field--password">
+            <label class="login-mobile-form__label" for="password-mobile">Password</label>
+            <div class="login-mobile-form__input-wrap">
+              <input
+                class="login-mobile-form__input login-mobile-form__input--password"
+                type="password"
+                id="password-mobile"
+                name="password"
+                placeholder="Masukkan kata sandi"
+                autocomplete="current-password"
+              >
+              <span class="login-mobile-form__icon">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTYuNSAxMC41VjYuNzVhNC41IDQuNSAwIDEgMC05IDB2My43NW0tLjc1IDExLjI1aDEwLjVhMi4yNSAyLjI1IDAgMCAwIDIuMjUtMi4yNXYtNi43NWEyLjI1IDIuMjUgMCAwIDAtMi4yNS0yLjI1SDYuNzVhMi4yNSAyLjI1IDAgMCAwLTIuMjUgMi4yNXY2Ljc1YTIuMjUgMi4yNSAwIDAgMCAyLjI1IDIuMjVaIi8+PC9zdmc+" alt="" width="16" height="21">
+              </span>
+              <button
+                type="button"
+                class="login-mobile-form__toggle password-toggle"
+                aria-label="Tampilkan kata sandi"
+                aria-pressed="false"
+                data-target="password-mobile"
+              >
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMi4wMzYgMTIuMzIyYTEuMDEyIDEuMDEyIDAgMCAxIDAtLjYzOUMzLjQyMyA3LjUxIDcuMzYgNC41IDEyIDQuNWM0LjYzOCAwIDguNTczIDMuMDA3IDkuOTYzIDcuMTc4LjA3LjIwNy4wNy40MzEgMCAuNjM5QzIwLjU3NyAxNi40OSAxNi42NCAxOS41IDEyIDE5LjVjLTQuNjM4IDAtOC41NzMtMy4wMDctOS45NjMtNy4xNzhaIi8+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTUgMTJhMyAzIDAgMSAxLTYgMCAzIDMgMCAwIDEgNiAwWiIvPjwvc3ZnPg==" alt="" width="22" height="15">
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="login-mobile-form__submit">
+            <span class="login-mobile-form__submit-text">Masuk</span>
+            <img class="login-mobile-form__submit-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZT0iI2ZmZmZmZiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuMjUgOC4yNSAyMSAxMm0wIDAtMy43NSAzLjc1TTIxIDEySDMiLz48L3N2Zz4=" alt="" width="16" height="16">
+          </button>
+        </form>
+
+        <footer class="login-mobile__footer">
+          <a class="login-mobile__link" href="#">Lupa kata sandi?</a>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Minimal vanilla JS: password show/hide toggle for both layouts.
+    (function () {
+      var toggles = document.querySelectorAll('.password-toggle');
+
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+          var targetId = toggle.getAttribute('data-target');
+          var input = document.getElementById(targetId);
+          if (!input) return;
+
+          var isPassword = input.getAttribute('type') === 'password';
+          input.setAttribute('type', isPassword ? 'text' : 'password');
+          toggle.setAttribute('aria-pressed', String(isPassword));
+          toggle.setAttribute(
+            'aria-label',
+            isPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi'
+          );
+
+          var icon = toggle.querySelector('img');
+          if (icon) {
+            icon.style.transition = 'transform 150ms ease';
+            icon.style.transform = 'scale(0.8)';
+            window.requestAnimationFrame(function () {
+              icon.style.transform = 'scale(1)';
+            });
+          }
+        });
+      });
+    })();
+
+    // Navigate to Halaman Beranda after a successful login.
+    // The target file is expected to sit next to this one
+    // (e.g. both downloaded into the same folder).
+    (function () {
+      var BERANDA_URL = 'halaman-beranda.html';
+
+      var forms = [
+        document.getElementById('loginFormDesktop'),
+        document.getElementById('loginFormMobile')
+      ];
+
+      forms.forEach(function (form) {
+        if (!form) return;
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          var submitBtn = form.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'progress';
+          }
+
+          // In a real app this is where you'd validate credentials
+          // against a server before redirecting.
+          window.location.href = BERANDA_URL;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

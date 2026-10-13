@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Ibu Hamil — Dewi Sartika</title>
+<meta name="description" content="Detail data pendampingan ibu hamil Dewi Sartika oleh Kader TPK Kota Yogyakarta.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ===== Detail-page extras ===== */
+  .detail-canvas { display:flex; flex-direction:column; gap:20px; max-width:1280px; width:100%; padding:24px; }
+
+  /* Section card */
+  .dcard { background:#fff; border:1px solid #c4c5d5; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05); overflow:hidden; }
+  .dcard__head { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid #e2e8f0; }
+  .dcard__title { margin:0; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#444653; }
+  .dcard__body { padding:20px; }
+
+  /* Field-value grid */
+  .fv-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px 20px; }
+  .fv-grid--2 { grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .fv-item { display:flex; flex-direction:column; gap:3px; }
+  .fv-item dt { font-size:11px; font-weight:600; color:#64748b; text-transform:uppercase; letter-spacing:0.5px; }
+  .fv-item dd { margin:0; font-size:14px; font-weight:500; color:#0b1c30; line-height:20px; word-break:break-word; }
+  .fv-item dd.mono { font-family:'Courier New', monospace; }
+
+  /* IMT display */
+  .imt-display { display:inline-flex; align-items:center; gap:8px; }
+  .imt-display strong { font-size:18px; font-weight:700; color:#0b1c30; }
+  .imt-badge { font-size:11px; font-weight:700; padding:2px 8px; border-radius:2px; background:rgba(196,197,213,0.4); color:#444653; }
+
+  /* Warning pill */
+  .risk-pill { display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; padding:3px 10px; border-radius:2px; }
+  .risk-pill--danger { background:#fee2e2; color:#991b1b; }
+  .risk-pill--ok { background:#dcfce7; color:#166534; }
+  .risk-pill--warning { background:#fef3c7; color:#92400e; }
+  .risk-pill--neutral { background:#f1f5f9; color:#475569; }
+
+  /* Badge overrides */
+  .badge--belum { background-color:#f1f5f9; color:#64748b; border:1px solid #cbd5e1; }
+
+  /* Measurement highlight row */
+  .meas-row { display:flex; align-items:center; justify-content:space-between; background:#eff4ff; border-radius:6px; padding:10px 14px; margin-bottom:6px; }
+  .meas-row:last-child { margin-bottom:0; }
+  .meas-row__label { font-size:13px; font-weight:500; color:#0b1c30; }
+  .meas-row__val { display:flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:#0b1c30; }
+
+  /* Profile header card */
+  .ph-card { background:#fff; border:1px solid #c4c5d5; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05); }
+  .ph-top { display:flex; align-items:flex-start; justify-content:space-between; padding:20px 24px; flex-wrap:wrap; gap:16px; }
+  .ph-avatar { width:52px; height:52px; border-radius:14px; background:#fce7f3; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .ph-avatar svg { width:22px; height:22px; }
+  .ph-info { flex:1; min-width:0; }
+  .ph-label { margin:0; font-size:12px; color:#64748b; }
+  .ph-name { margin:4px 0 2px; font-size:22px; font-weight:700; color:#0b1c30; }
+  .ph-nik { margin:0; font-size:11px; color:#64748b; font-family:'Courier New', monospace; }
+  .ph-meta { display:flex; gap:16px; margin-top:12px; padding-top:10px; border-top:1px solid rgba(196,197,213,0.5); flex-wrap:wrap; }
+  .ph-meta-item p:first-child { margin:0 0 2px; font-size:11px; font-weight:600; color:#64748b; }
+  .ph-meta-item p:last-child { margin:0; font-size:14px; font-weight:700; color:#0b1c30; }
+  .ph-actions { display:flex; gap:10px; flex-shrink:0; align-self:flex-start; }
+  .ph-tabs { display:flex; gap:24px; padding:0 24px; border-top:1px solid #c4c5d5; }
+  .ph-tabs button { background:none; border:none; padding:14px 0; font-size:14px; color:#64748b; border-bottom:2px solid transparent; cursor:pointer; transition:all 150ms; }
+  .ph-tabs button.is-active { font-weight:700; color:#0b1c30; border-bottom-color:#444653; }
+
+  /* Two-column layout */
+  .dl-layout { display:flex; gap:20px; align-items:flex-start; }
+  .dl-main { flex:1; min-width:0; display:flex; flex-direction:column; gap:20px; }
+  .dl-aside { width:300px; flex-shrink:0; display:flex; flex-direction:column; gap:16px; }
+
+  /* Aside card */
+  .aside-dcard { background:#fff; border:1px solid #c4c5d5; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.05); padding:20px; display:flex; flex-direction:column; gap:12px; }
+  .aside-dcard h4 { margin:0 0 2px; font-size:13px; font-weight:700; color:#0b1c30; padding-bottom:8px; border-bottom:1px solid #e2e8f0; }
+  .aside-dcard ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
+  .aside-dcard li { display:flex; gap:6px; font-size:13px; color:#444653; line-height:18px; }
+  .aside-dcard li::before { content:'\2022'; flex-shrink:0; color:#444653; }
+
+  /* Visit timeline */
+  .visit-item { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border:1px solid #e2e8f0; border-radius:6px; margin-bottom:8px; }
+  .visit-item:last-child { margin-bottom:0; }
+  .visit-item__info p:first-child { margin:0 0 2px; font-size:13px; font-weight:700; color:#0b1c30; }
+  .visit-item__info p:last-child { margin:0; font-size:12px; color:#64748b; }
+  .visit-item__badge { font-size:11px; font-weight:700; padding:3px 10px; background:#444653; color:#fff; border-radius:3px; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <div>
+      <div class="sidebar__brand">
+        <h2 class="sidebar__title">Kader TPK</h2>
+        <p class="sidebar__subtitle">Pemerintah Kota Yogyakarta</p>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="halaman-beranda.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+          <span>Beranda</span>
+        </a>
+        <a class="sidebar__link" href="halaman-catin.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          <span>Catin</span>
+        </a>
+        <a class="sidebar__link sidebar__link--active" href="halaman-bumil.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+          <span>Ibu Hamil</span>
+        </a>
+        <a class="sidebar__link" href="halaman-bulin.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Z"/></svg>
+          <span>Pasca Salin</span>
+        </a>
+        <a class="sidebar__link" href="halaman-baduta.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+          <span>Baduta</span>
+        </a>
+        <a class="sidebar__link" href="halaman-balita.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 7a7 7 0 0 1 14 0H5Z"/></svg>
+          <span>Balita</span>
+        </a>
+      </nav>
+    </div>
+    <div class="sidebar__footer">
+      <a class="sidebar__footer-link" href="#">
+        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+        <span>Pusat Bantuan</span>
+      </a>
+      <a class="sidebar__footer-link sidebar__footer-link--strong" href="halaman-login.html" style="color:#dc2626;">
+        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
+        <span>Keluar</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__account">
+        <div><p class="topbar__name">Admin Kader</p><p class="topbar__role">Petugas TPK Ibu Hamil</p></div>
+        <div class="topbar__avatar"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NU0xNSA5Ljc1YTMgMyAwIDEgMS02IDAgMyAzIDAgMCAxIDYgMFptNiAyLjI1YTkgOSAwIDEgMS0xOCAwIDkgOSAwIDAgMSAxOCAwWiIvPjwvc3ZnPg==" alt="Foto profil"></div>
+      </div>
+    </header>
+
+    <main class="detail-canvas">
+
+      <!-- Profile Header Card -->
+      <div class="ph-card">
+        <div class="ph-top">
+          <div style="display:flex;align-items:flex-start;gap:14px;flex:1;">
+            <div class="ph-avatar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15.75a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5Zm0 0V21m-3-3h6"/></svg>
+            </div>
+            <div class="ph-info">
+              <p class="ph-label">Tim Pendamping Keluarga (TPK) — Ibu Hamil · Kota Yogyakarta</p>
+              <p class="ph-name">Dewi Sartika</p>
+              <p class="ph-nik">NIK: 3319015204980002 &nbsp;|&nbsp; Kel. Suryatmajan, Danurejan</p>
+              <div class="ph-meta">
+                <div class="ph-meta-item"><p>Usia Kehamilan</p><p>24 Minggu (Trimester 2)</p></div>
+                <div class="ph-meta-item"><p>HPL</p><p>15 Desember 2026</p></div>
+                <div class="ph-meta-item"><p>Status Risiko</p><p><span class="badge badge--kek">KEK &amp; Anemia</span></p></div>
+                <div class="ph-meta-item"><p>Riwayat Kunjungan</p><p>3 Kali</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="ph-actions">
+            <button class="btn btn--outline" type="button" onclick="window.print();">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z"/></svg>
+              Cetak
+            </button>
+            <a href="halaman-bumil.html" class="btn btn--dark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+              Kembali
+            </a>
+          </div>
+        </div>
+        <nav class="ph-tabs">
+          <button type="button" class="is-active" id="tabData">Data Ibu Hamil</button>
+          <button type="button" id="tabKunjungan">Riwayat Kunjungan TPK</button>
+        </nav>
+      </div>
+
+      <!-- Data Tab -->
+      <div id="panelData">
+        <div class="dl-layout">
+          <!-- Main column -->
+          <div class="dl-main">
+
+            <!-- 1. Wilayah & Pelaporan -->
+            <div class="dcard">
+              <div class="dcard__head"><h3 class="dcard__title">1. Wilayah &amp; Pelaporan</h3></div>
+              <div class="dcard__body">
+                <div class="fv-grid">
+                  <div class="fv-item"><dt>Bulan Laporan</dt><dd>Oktober</dd></div>
+                  <div class="fv-item"><dt>Tanggal Kunjungan</dt><dd>9 Oktober 2026</dd></div>
+                  <div class="fv-item"><dt>Kemantren</dt><dd>Danurejan</dd></div>
+                  <div class="fv-item"><dt>Kelurahan</dt><dd>Suryatmajan</dd></div>
+                  <div class="fv-item"><dt>Nama TPK</dt><dd>Siti Aminah (Kader 01)</dd></div>
+                  <div class="fv-item"><dt>Unsur TPK</dt><dd>Bidan</dd></div>
+                  <div class="fv-item"><dt>Kunjungan Ke-</dt><dd>3</dd></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Identitas Ibu -->
+            <div class="dcard">
+              <div class="dcard__head"><h3 class="dcard__title">2. Identitas Ibu</h3></div>
+              <div class="dcard__body">
+                <div class="fv-grid">
+                  <div class="fv-item" style="grid-column:1/-1;"><dt>Nama Lengkap</dt><dd>Dewi Sartika</dd></div>
+                  <div class="fv-item"><dt>NIK</dt><dd class="mono">3319015204980002</dd></div>
+                  <div class="fv-item"><dt>Tanggal Lahir</dt><dd>12 April 1998 (28 tahun)</dd></div>
+                  <div class="fv-item"><dt>Nomor WhatsApp</dt><dd>08123456789</dd></div>
+                  <div class="fv-item" style="grid-column:1/-1;"><dt>Alamat</dt><dd>Jl. Mataram No. 12, RT 04/RW 02, Kel. Suryatmajan, Danurejan, Kota Yogyakarta</dd></div>
+                  <div class="fv-item"><dt>RT</dt><dd>04</dd></div>
+                  <div class="fv-item"><dt>RW</dt><dd>02</dd></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Riwayat Kehamilan -->
+            <div class="dcard">
+              <div class="dcard__head"><h3 class="dcard__title">3. Riwayat Kehamilan &amp; Penyakit</h3></div>
+              <div class="dcard__body">
+                <div class="fv-grid fv-grid--2">
+                  <div class="fv-item"><dt>Jumlah Anak Dilahirkan</dt><dd>1</dd></div>
+                  <div class="fv-item"><dt>Usia Anak Terakhir</dt><dd>2 tahun 5 bulan</dd></div>
+                  <div class="fv-item"><dt>Tanggal Lahir Anak Terakhir</dt><dd>20 Mei 2024</dd></div>
+                  <div class="fv-item"><dt>Memiliki Riwayat Penyakit</dt><dd>Ya</dd></div>
+                  <div class="fv-item" style="grid-column:1/-1;"><dt>Diagnosis Dokter</dt><dd>Anemia, KEK</dd></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Kehamilan & Pemeriksaan -->
+            <div class="dcard">
+              <div class="dcard__head"><h3 class="dcard__title">4. Kehamilan &amp; Pemeriksaan</h3></div>
+              <div class="dcard__body" style="display:flex;flex-direction:column;gap:16px;">
+                <!-- Measurement highlights -->
+                <div>
+                  <div class="meas-row">
+                    <span class="meas-row__label">Lingkar Lengan Atas (LiLA)</span>
+                    <div class="meas-row__val">21,5 cm <span class="risk-pill risk-pill--danger">&#9888; KEK</span></div>
+                  </div>
+                  <div class="meas-row">
+                    <span class="meas-row__label">Kadar Hemoglobin (Hb)</span>
+                    <div class="meas-row__val">10,2 g/dL <span class="risk-pill risk-pill--danger">&#9888; Anemia</span></div>
+                  </div>
+                  <div class="meas-row">
+                    <span class="meas-row__label">Indeks Massa Tubuh (IMT)</span>
+                    <div class="meas-row__val"><div class="imt-display"><strong>20,4</strong><span class="imt-badge">Normal</span></div></div>
+                  </div>
+                </div>
+                <div class="fv-grid">
+                  <div class="fv-item"><dt>Usia Kehamilan</dt><dd>24 Minggu</dd></div>
+                  <div class="fv-item"><dt>HPL (Hari Perkiraan Lahir)</dt><dd>15 Desember 2026</dd></div>
+                  <div class="fv-item"><dt>Kehamilan Kembar</dt><dd>Tidak</dd></div>
+                  <div class="fv-item"><dt>Tinggi Badan</dt><dd>155,0 cm</dd></div>
+                  <div class="fv-item"><dt>Berat Badan</dt><dd>49,0 kg</dd></div>
+                  <div class="fv-item"><dt>BB Sebelum Hamil</dt><dd>46,0 kg</dd></div>
+                  <div class="fv-item"><dt>Tinggi Fundus Uteri (TFU)</dt><dd>22,0 cm</dd></div>
+                  <div class="fv-item"><dt>Taksiran Berat Janin (TBJ)</dt><dd>875 gram</dd></div>
+                  <div class="fv-item"><dt>Terpapar Asap Rokok</dt><dd><span class="risk-pill risk-pill--danger">Ya</span></dd></div>
+                  <div class="fv-item"><dt>Input ElSIMIL</dt><dd>Sudah</dd></div>
+                  <div class="fv-item"><dt>Hasil Skrining ElSIMIL</dt><dd><span class="badge badge--stunting">Berisiko</span></dd></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Lingkungan & Sanitasi -->
+            <div class="dcard">
+              <div class="dcard__head"><h3 class="dcard__title">5. Lingkungan &amp; Sanitasi</h3></div>
+              <div class="dcard__body">
+                <div class="fv-grid fv-grid--2">
+                  <div class="fv-item"><dt>Sumber Air Minum Utama</dt><dd>Ledeng/PAM, Air kemasan/isi ulang</dd></div>
+                  <div class="fv-item"><dt>Fasilitas Jamban</dt><dd>Jamban milik sendiri dengan leher angsa &amp; tangki septik/IPAL</dd></div>
+                  <div class="fv-item"><dt>Foto Depan Rumah</dt><dd><span class="risk-pill risk-pill--neutral">Belum diunggah</span></dd></div>
+                  <div class="fv-item"><dt>Foto Jamban</dt><dd><span class="risk-pill risk-pill--neutral">Belum diunggah</span></dd></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Intervensi & Tindak Lanjut -->
+            <div class="dcard">
+              <div class="dcard__head"><h3 class="dcard__title">6. Intervensi &amp; Tindak Lanjut</h3></div>
+              <div class="dcard__body">
+                <div class="fv-grid">
+                  <div class="fv-item"><dt>Konsumsi TTD</dt><dd><span class="risk-pill risk-pill--ok">Ya</span></dd></div>
+                  <div class="fv-item"><dt>Mendapat PMT</dt><dd><span class="risk-pill risk-pill--ok">Ya</span></dd></div>
+                  <div class="fv-item"><dt>Sumber PMT</dt><dd>PMT Puskesmas/BOK</dd></div>
+                  <div class="fv-item"><dt>Mendapat MBG 3B</dt><dd>Tidak</dd></div>
+                  <div class="fv-item"><dt>Fasilitasi Bansos</dt><dd>Ya, sedang proses</dd></div>
+                  <div class="fv-item"><dt>Penyuluhan</dt><dd>Ya, perorangan</dd></div>
+                  <div class="fv-item" style="grid-column:1/-1;"><dt>Materi KIE yang Diberikan</dt><dd>Edukasi konsumsi PMT tinggi protein, pentingnya TTD rutin, bahaya paparan asap rokok saat hamil, anjuran untuk tidak merokok dalam rumah.</dd></div>
+                  <div class="fv-item"><dt>Rujukan Faskes</dt><dd>Ya, sudah mendapat tatalaksana</dd></div>
+                  <div class="fv-item" style="grid-column:1/-1;"><dt>Kendala dalam Pendampingan</dt><dd>Suami bekerja di luar kota, edukasi terbatas hanya pada ibu.</dd></div>
+                  <div class="fv-item" style="grid-column:1/-1;"><dt>Catatan</dt><dd>Dirujuk ke Puskesmas untuk pemeriksaan USG Trimester 2 dan konsultasi gizi. Pantau perkembangan Hb bulan berikutnya.</dd></div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /dl-main -->
+
+          <!-- Aside -->
+          <aside class="dl-aside">
+            <div class="aside-dcard">
+              <h4>Ringkasan Risiko</h4>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div class="meas-row" style="margin-bottom:0;">
+                  <span class="meas-row__label" style="font-size:12px;">LiLA</span>
+                  <div class="meas-row__val" style="font-size:12px;">21,5 cm <span class="risk-pill risk-pill--danger" style="font-size:10px;">KEK</span></div>
+                </div>
+                <div class="meas-row" style="margin-bottom:0;">
+                  <span class="meas-row__label" style="font-size:12px;">Hb</span>
+                  <div class="meas-row__val" style="font-size:12px;">10,2 g/dL <span class="risk-pill risk-pill--danger" style="font-size:10px;">Anemia</span></div>
+                </div>
+                <div class="meas-row" style="margin-bottom:0;">
+                  <span class="meas-row__label" style="font-size:12px;">IMT</span>
+                  <div class="meas-row__val" style="font-size:12px;">20,4 <span class="risk-pill risk-pill--ok" style="font-size:10px;">Normal</span></div>
+                </div>
+              </div>
+              <div style="border-top:1px solid #e2e8f0;padding-top:10px;">
+                <p style="margin:0 0 6px;font-size:11px;font-weight:700;color:#444653;text-transform:uppercase;letter-spacing:0.5px;">Status Skrining ElSIMIL</p>
+                <span class="badge badge--stunting">Berisiko</span>
+              </div>
+            </div>
+
+            <div class="aside-dcard">
+              <h4>Catatan &amp; Tindak Lanjut</h4>
+              <ul>
+                <li>KEK (LiLA 21,5 cm) dan Anemia ringan (Hb 10,2 g/dL) — perlu pemantauan ketat.</li>
+                <li>Edukasi PMT tinggi protein dan konsumsi TTD rutin.</li>
+                <li>Suami diminta tidak merokok di dalam rumah.</li>
+                <li>Bansos sedang dalam proses pengajuan.</li>
+              </ul>
+            </div>
+
+            <div class="aside-dcard">
+              <h4>Rujukan Faskes</h4>
+              <ul>
+                <li>Dirujuk ke Puskesmas Danurejan untuk USG Trimester 2.</li>
+                <li>Konsultasi gizi intensif terjadwal.</li>
+              </ul>
+              <p style="margin:4px 0 0;font-size:11px;color:#64748b;">Status: <strong style="color:#16a34a;">Sudah mendapat tatalaksana</strong></p>
+            </div>
+
+            <div class="aside-dcard">
+              <h4>Informasi Kunjungan</h4>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#64748b;">Total Kunjungan</span><strong>3 kali</strong></div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#64748b;">Kunjungan Terakhir</span><strong>9 Okt 2026</strong></div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#64748b;">Kader TPK</span><strong>Siti Aminah</strong></div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;"><span style="color:#64748b;">Unsur TPK</span><strong>Bidan</strong></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div><!-- /panelData -->
+
+      <!-- Riwayat Kunjungan Tab -->
+      <div id="panelKunjungan" style="display:none;">
+        <div class="dcard">
+          <div class="dcard__head">
+            <h3 class="dcard__title">Riwayat Kunjungan TPK</h3>
+          </div>
+          <div class="dcard__body">
+            <div class="visit-item">
+              <div class="visit-item__info">
+                <p>Kunjungan ke-3 — Danurejan</p>
+                <p>9 Oktober 2026 &nbsp;·&nbsp; Bidan Siti Aminah</p>
+              </div>
+              <span class="visit-item__badge">Kunjungan 3</span>
+            </div>
+            <div class="visit-item">
+              <div class="visit-item__info">
+                <p>Kunjungan ke-2 — Danurejan</p>
+                <p>10 Agustus 2026 &nbsp;·&nbsp; Kader PKK Ratna</p>
+              </div>
+              <span class="visit-item__badge">Kunjungan 2</span>
+            </div>
+            <div class="visit-item">
+              <div class="visit-item__info">
+                <p>Kunjungan ke-1 — Danurejan</p>
+                <p>15 Juni 2026 &nbsp;·&nbsp; Bidan Siti Aminah</p>
+              </div>
+              <span class="visit-item__badge">Kunjungan 1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  document.getElementById('tabData').addEventListener('click', function() {
+    this.classList.add('is-active');
+    document.getElementById('tabKunjungan').classList.remove('is-active');
+    document.getElementById('panelData').style.display = '';
+    document.getElementById('panelKunjungan').style.display = 'none';
+  });
+  document.getElementById('tabKunjungan').addEventListener('click', function() {
+    this.classList.add('is-active');
+    document.getElementById('tabData').classList.remove('is-active');
+    document.getElementById('panelKunjungan').style.display = '';
+    document.getElementById('panelData').style.display = 'none';
+  });
+</script>
+</body>
+</html>

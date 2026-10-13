@@ -1,0 +1,13 @@
+{
+  "name": "kader-tpk-prototype",
+  "version": "1.0.0",
+  "description": "Prototipe HTML statis Kader TPK (Login, Beranda, Catin, Detail Catin) — dijalankan dengan server Node.js bawaan tanpa dependency eksternal.",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

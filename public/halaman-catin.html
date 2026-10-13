@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halaman Catin — Kader TPK</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app">
+        <aside class="sidebar" aria-label="Navigasi utama">
+      <div>
+        <div class="sidebar__brand">
+          <h2 class="sidebar__title">Kader TPK</h2>
+          <p class="sidebar__subtitle">Pemerintah Kota Yogyakarta</p>
+        </div>
+        <nav class="sidebar__nav">
+          <a class="sidebar__link" href="halaman-beranda.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+            <span>Beranda</span>
+          </a>
+          <a class="sidebar__link sidebar__link--active" href="halaman-catin.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+            <span>Catin</span>
+          </a>
+          <a class="sidebar__link" href="halaman-bumil.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+            <span>Ibu Hamil</span>
+          </a>
+          <a class="sidebar__link" href="halaman-bulin.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Z"/></svg>
+            <span>Pasca Salin</span>
+          </a>
+          <a class="sidebar__link" href="halaman-baduta.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+            <span>Baduta</span>
+          </a>
+          <a class="sidebar__link" href="halaman-balita.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 7a7 7 0 0 1 14 0H5Z"/></svg>
+            <span>Balita</span>
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar__footer">
+        <a class="sidebar__footer-link" href="#">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+          <span>Pusat Bantuan</span>
+        </a>
+        <a class="sidebar__footer-link sidebar__footer-link--strong" href="halaman-login.html" style="color:#dc2626;">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
+          <span>Keluar</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar__account">
+          <div>
+            <p class="topbar__name">Admin Kader</p>
+            <p class="topbar__role">Petugas TPK</p>
+          </div>
+          <div class="topbar__avatar"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NU0xNSA5Ljc1YTMgMyAwIDEgMS02IDAgMyAzIDAgMCAxIDYgMFptNiAyLjI1YTkgOSAwIDEgMS0xOCAwIDkgOSAwIDAgMSAxOCAwWiIvPjwvc3ZnPg==" alt="Foto profil"></div>
+        </div>
+      </header>
+
+      <!-- ============================================================
+           LIST VIEW — Figma node "Halaman Catin" (62:437)
+           ============================================================ -->
+      <main class="canvas" id="listView">
+        <section class="stat-row" aria-label="Statistik ringkasan Catin">
+          <article class="stat-card">
+            <p class="stat-card__label">Total Catin Terdaftar</p>
+            <p class="stat-card__value" id="totalTerdaftar">1.482</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-card__label">Total Beresiko</p>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">84</p>
+              <p class="stat-card__desc">Kasus terdeteksi berisiko</p>
+            </div>
+          </article>
+          <article class="stat-card">
+            <p class="stat-card__label">Total Tidak Beresiko</p>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">84</p>
+              <p class="stat-card__desc">Kasus terdeteksi tidak berisiko</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="toolbar" aria-label="Pencarian dan filter">
+          <div class="toolbar__row">
+            <div class="search-field">
+              <input type="text" placeholder="Cari Nama Pasangan atau NIK...">
+              <img class="search-field__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMjEgMjEtNS4xOTctNS4xOTdtMCAwQTcuNSA3LjUgMCAxIDAgNS4xOTYgNS4xOTZhNy41IDcuNSAwIDAgMCAxMC42MDcgMTAuNjA3WiIvPjwvc3ZnPg==" alt="">
+            </div>
+            <button class="btn btn--outline" type="button">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTAuNSA2aDkuNzVNMTAuNSA2YTEuNSAxLjUgMCAxIDEtMyAwbTMgMGExLjUgMS41IDAgMSAwLTMgME0zLjc1IDZINy41bTMgMTJoOS43NW0tOS43NSAwYTEuNSAxLjUgMCAwIDEtMyAwbTMgMGExLjUgMS41IDAgMCAwLTMgMG0tMy43NSAwSDcuNW05LTZoMy43NW0tMy43NSAwYTEuNSAxLjUgMCAwIDEtMyAwbTMgMGExLjUgMS41IDAgMCAwLTMgMG0tOS43NSAwaDkuNzUiLz48L3N2Zz4=" alt=""><span>Filter Lanjut</span>
+            </button>
+            <button class="btn btn--dark" type="button" id="openWizardBtn">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiNmZmZmZmYiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTEyIDQuNXYxNW03LjUtNy41aC0xNSIvPjwvc3ZnPg==" alt=""><span>Data Baru</span>
+            </button>
+          </div>
+
+          <div class="filter-grid">
+            <div class="filter-field">
+              <label for="filterKelurahan">Kelurahan</label>
+              <div class="select-wrap">
+                <select id="filterKelurahan">
+                  <option>Semua Kelurahan</option>
+                  <option>Kel. Kajeksan</option>
+                  <option>Kel. Glantengan</option>
+                  <option>Kel. Panjunan</option>
+                </select>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+              </div>
+            </div>
+            <div class="filter-field">
+              <label for="filterRisiko">Tingkat Risiko</label>
+              <div class="select-wrap">
+                <select id="filterRisiko">
+                  <option>Semua</option>
+                  <option selected>Beresiko</option>
+                  <option>Tidak Beresiko</option>
+                </select>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+              </div>
+            </div>
+            <div class="filter-field">
+              <label for="filterUrutan">Urutkan</label>
+              <div class="select-wrap">
+                <select id="filterUrutan">
+                  <option selected>Terbaru</option>
+                  <option>Terlama</option>
+                  <option>Nama A-Z</option>
+                </select>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="table-card" aria-label="Tabel data Catin">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:72px;">No.</th>
+                <th>Pasangan Catin</th>
+                <th>Identitas (NIK)</th>
+                <th>Status Risiko</th>
+                <th style="width:120px;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="catinTableBody">
+              <tr>
+                <td>1.</td>
+                <td><p class="pair-name">Anisa Putri</p><p class="pair-kel">Kel. Kajeksan</p></td>
+                <td class="nik-cell">3319014506990001</td>
+                <td><span class="badge badge--risk"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTIgOXYzLjc1bS05LjMwMyAzLjM3NmMtLjg2NiAxLjUuMjE3IDMuMzc0IDEuOTQ4IDMuMzc0aDE0LjcxYzEuNzMgMCAyLjgxMy0xLjg3NCAxLjk0OC0zLjM3NEwxMy45NDkgMy4zNzhjLS44NjYtMS41LTMuMDMyLTEuNS0zLjg5OCAwTDIuNjk3IDE2LjEyNlpNMTIgMTUuNzVoLjAwN3YuMDA4SDEydi0uMDA4WiIvPjwvc3ZnPg==" alt="">Beresiko</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-btn" type="button" aria-label="Edit"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTYuODYyIDQuNDg3IDEuNjg3LTEuNjg4YTEuODc1IDEuODc1IDAgMSAxIDIuNjUyIDIuNjUyTDEwLjU4MiAxNi4wN2E0LjUgNC41IDAgMCAxLTEuODk3IDEuMTNMNiAxOGwuOC0yLjY4NWE0LjUgNC41IDAgMCAxIDEuMTMtMS44OTdsOC45MzItOC45MzFabTAgMEwxOS41IDcuMTI1TTE4IDE0djQuNzVBMi4yNSAyLjI1IDAgMCAxIDE1Ljc1IDIxSDUuMjVBMi4yNSAyLjI1IDAgMCAxIDMgMTguNzVWOC4yNUEyLjI1IDIuMjUgMCAwIDEgNS4yNSA2SDEwIi8+PC9zdmc+" alt=""></button>
+                    <button class="icon-btn" type="button" aria-label="Hapus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMzQ2IDltLTQuNzg4IDBMOS4yNiA5TTE5LjIyOCA1Ljc5Yy4zNDIuMDUyLjY4Mi4xMDcgMS4wMjIuMTY2bS0xLjAyMi0uMTY2TDE4LjE2IDE5LjY3M2EyLjI1IDIuMjUgMCAwIDEtMi4yNDQgMi4wNzdIOC4wODRhMi4yNSAyLjI1IDAgMCAxLTIuMjQ0LTIuMDc3TDQuNzcyIDUuNzltMTQuNDU2IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC0zLjQ3OC0uMzk3bS0xMiAuNTYyYy4zNC0uMDU5LjY4LS4xMTQgMS4wMjItLjE2NW0wIDBhNDguMTEgNDguMTEgMCAwIDEgMy40NzgtLjM5N203LjUgMHYtLjkxNmMwLTEuMTgtLjkxLTIuMTY0LTIuMDktMi4yMDFhNTEuOTY0IDUxLjk2NCAwIDAgMC0zLjMyIDBjLTEuMTguMDM3LTIuMDkgMS4wMjItMi4wOSAyLjIwMXYuOTE2bTcuNSAwYTQ4LjY2NyA0OC42NjcgMCAwIDAtNy41IDAiLz48L3N2Zz4=" alt=""></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td><p class="pair-name">Maya R.</p><p class="pair-kel">Kel. Glantengan</p></td>
+                <td class="nik-cell">3319021208980004</td>
+                <td><span class="badge badge--safe"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOSAxMi43NSAxMS4yNSAxNSAxNSA5Ljc1bS0zLTcuMDM2QTExLjk1OSAxMS45NTkgMCAwIDEgMy41OTggNiAxMS45OSAxMS45OSAwIDAgMCAzIDkuNzQ5YzAgNS41OTIgMy44MjQgMTAuMjkgOSAxMS42MjMgNS4xNzYtMS4zMzIgOS02LjAzIDktMTEuNjIyIDAtMS4zMS0uMjEtMi41NzEtLjU5OC0zLjc1MWgtLjE1MmMtMy4xOTYgMC02LjEtMS4yNDgtOC4yNS0zLjI4NVoiLz48L3N2Zz4=" alt="">Tidak Beresiko</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-btn" type="button" aria-label="Edit"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTYuODYyIDQuNDg3IDEuNjg3LTEuNjg4YTEuODc1IDEuODc1IDAgMSAxIDIuNjUyIDIuNjUyTDEwLjU4MiAxNi4wN2E0LjUgNC41IDAgMCAxLTEuODk3IDEuMTNMNiAxOGwuOC0yLjY4NWE0LjUgNC41IDAgMCAxIDEuMTMtMS44OTdsOC45MzItOC45MzFabTAgMEwxOS41IDcuMTI1TTE4IDE0djQuNzVBMi4yNSAyLjI1IDAgMCAxIDE1Ljc1IDIxSDUuMjVBMi4yNSAyLjI1IDAgMCAxIDMgMTguNzVWOC4yNUEyLjI1IDIuMjUgMCAwIDEgNS4yNSA2SDEwIi8+PC9zdmc+" alt=""></button>
+                    <button class="icon-btn" type="button" aria-label="Hapus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMzQ2IDltLTQuNzg4IDBMOS4yNiA5TTE5LjIyOCA1Ljc5Yy4zNDIuMDUyLjY4Mi4xMDcgMS4wMjIuMTY2bS0xLjAyMi0uMTY2TDE4LjE2IDE5LjY3M2EyLjI1IDIuMjUgMCAwIDEtMi4yNDQgMi4wNzdIOC4wODRhMi4yNSAyLjI1IDAgMCAxLTIuMjQ0LTIuMDc3TDQuNzcyIDUuNzltMTQuNDU2IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC0zLjQ3OC0uMzk3bS0xMiAuNTYyYy4zNC0uMDU5LjY4LS4xMTQgMS4wMjItLjE2NW0wIDBhNDguMTEgNDguMTEgMCAwIDEgMy40NzgtLjM5N203LjUgMHYtLjkxNmMwLTEuMTgtLjkxLTIuMTY0LTIuMDktMi4yMDFhNTEuOTY0IDUxLjk2NCAwIDAgMC0zLjMyIDBjLTEuMTguMDM3LTIuMDkgMS4wMjItMi4wOSAyLjIwMXYuOTE2bTcuNSAwYTQ4LjY2NyA0OC42NjcgMCAwIDAtNy41IDAiLz48L3N2Zz4=" alt=""></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td><p class="pair-name">Dewi Sartika</p><p class="pair-kel">Kel. Panjunan</p></td>
+                <td class="nik-cell">3319015509970002</td>
+                <td><span class="badge badge--risk"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTIgOXYzLjc1bS05LjMwMyAzLjM3NmMtLjg2NiAxLjUuMjE3IDMuMzc0IDEuOTQ4IDMuMzc0aDE0LjcxYzEuNzMgMCAyLjgxMy0xLjg3NCAxLjk0OC0zLjM3NEwxMy45NDkgMy4zNzhjLS44NjYtMS41LTMuMDMyLTEuNS0zLjg5OCAwTDIuNjk3IDE2LjEyNlpNMTIgMTUuNzVoLjAwN3YuMDA4SDEydi0uMDA4WiIvPjwvc3ZnPg==" alt="">Beresiko</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-btn" type="button" aria-label="Edit"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTYuODYyIDQuNDg3IDEuNjg3LTEuNjg4YTEuODc1IDEuODc1IDAgMSAxIDIuNjUyIDIuNjUyTDEwLjU4MiAxNi4wN2E0LjUgNC41IDAgMCAxLTEuODk3IDEuMTNMNiAxOGwuOC0yLjY4NWE0LjUgNC41IDAgMCAxIDEuMTMtMS44OTdsOC45MzItOC45MzFabTAgMEwxOS41IDcuMTI1TTE4IDE0djQuNzVBMi4yNSAyLjI1IDAgMCAxIDE1Ljc1IDIxSDUuMjVBMi4yNSAyLjI1IDAgMCAxIDMgMTguNzVWOC4yNUEyLjI1IDIuMjUgMCAwIDEgNS4yNSA2SDEwIi8+PC9zdmc+" alt=""></button>
+                    <button class="icon-btn" type="button" aria-label="Hapus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMzQ2IDltLTQuNzg4IDBMOS4yNiA5TTE5LjIyOCA1Ljc5Yy4zNDIuMDUyLjY4Mi4xMDcgMS4wMjIuMTY2bS0xLjAyMi0uMTY2TDE4LjE2IDE5LjY3M2EyLjI1IDIuMjUgMCAwIDEtMi4yNDQgMi4wNzdIOC4wODRhMi4yNSAyLjI1IDAgMCAxLTIuMjQ0LTIuMDc3TDQuNzcyIDUuNzltMTQuNDU2IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC0zLjQ3OC0uMzk3bS0xMiAuNTYyYy4zNC0uMDU5LjY4LS4xMTQgMS4wMjItLjE2NW0wIDBhNDguMTEgNDguMTEgMCAwIDEgMy40NzgtLjM5N203LjUgMHYtLjkxNmMwLTEuMTgtLjkxLTIuMTY0LTIuMDktMi4yMDFhNTEuOTY0IDUxLjk2NCAwIDAgMC0zLjMyIDBjLTEuMTguMDM3LTIuMDkgMS4wMjItMi4wOSAyLjIwMXYuOTE2bTcuNSAwYTQ4LjY2NyA0OC42NjcgMCAwIDAtNy41IDAiLz48L3N2Zz4=" alt=""></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td><p class="pair-name">Linda Wahyu</p><p class="pair-kel">Kel. Kajeksan</p></td>
+                <td class="nik-cell">3319022010990008</td>
+                <td><span class="badge badge--safe"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOSAxMi43NSAxMS4yNSAxNSAxNSA5Ljc1bS0zLTcuMDM2QTExLjk1OSAxMS45NTkgMCAwIDEgMy41OTggNiAxMS45OSAxMS45OSAwIDAgMCAzIDkuNzQ5YzAgNS41OTIgMy44MjQgMTAuMjkgOSAxMS42MjMgNS4xNzYtMS4zMzIgOS02LjAzIDktMTEuNjIyIDAtMS4zMS0uMjEtMi41NzEtLjU5OC0zLjc1MWgtLjE1MmMtMy4xOTYgMC02LjEtMS4yNDgtOC4yNS0zLjI4NVoiLz48L3N2Zz4=" alt="">Tidak Beresiko</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-btn" type="button" aria-label="Edit"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTYuODYyIDQuNDg3IDEuNjg3LTEuNjg4YTEuODc1IDEuODc1IDAgMSAxIDIuNjUyIDIuNjUyTDEwLjU4MiAxNi4wN2E0LjUgNC41IDAgMCAxLTEuODk3IDEuMTNMNiAxOGwuOC0yLjY4NWE0LjUgNC41IDAgMCAxIDEuMTMtMS44OTdsOC45MzItOC45MzFabTAgMEwxOS41IDcuMTI1TTE4IDE0djQuNzVBMi4yNSAyLjI1IDAgMCAxIDE1Ljc1IDIxSDUuMjVBMi4yNSAyLjI1IDAgMCAxIDMgMTguNzVWOC4yNUEyLjI1IDIuMjUgMCAwIDEgNS4yNSA2SDEwIi8+PC9zdmc+" alt=""></button>
+                    <button class="icon-btn" type="button" aria-label="Hapus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMzQ2IDltLTQuNzg4IDBMOS4yNiA5TTE5LjIyOCA1Ljc5Yy4zNDIuMDUyLjY4Mi4xMDcgMS4wMjIuMTY2bS0xLjAyMi0uMTY2TDE4LjE2IDE5LjY3M2EyLjI1IDIuMjUgMCAwIDEtMi4yNDQgMi4wNzdIOC4wODRhMi4yNSAyLjI1IDAgMCAxLTIuMjQ0LTIuMDc3TDQuNzcyIDUuNzltMTQuNDU2IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC0zLjQ3OC0uMzk3bS0xMiAuNTYyYy4zNC0uMDU5LjY4LS4xMTQgMS4wMjItLjE2NW0wIDBhNDguMTEgNDguMTEgMCAwIDEgMy40NzgtLjM5N203LjUgMHYtLjkxNmMwLTEuMTgtLjkxLTIuMTY0LTIuMDktMi4yMDFhNTEuOTY0IDUxLjk2NCAwIDAgMC0zLjMyIDBjLTEuMTguMDM3LTIuMDkgMS4wMjItMi4wOSAyLjIwMXYuOTE2bTcuNSAwYTQ4LjY2NyA0OC42NjcgMCAwIDAtNy41IDAiLz48L3N2Zz4=" alt=""></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>5.</td>
+                <td><p class="pair-name">Linda Ama</p><p class="pair-kel">Kel. Kajeksan</p></td>
+                <td class="nik-cell">3319022010931212</td>
+                <td><span class="badge badge--safe"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOSAxMi43NSAxMS4yNSAxNSAxNSA5Ljc1bS0zLTcuMDM2QTExLjk1OSAxMS45NTkgMCAwIDEgMy41OTggNiAxMS45OSAxMS45OSAwIDAgMCAzIDkuNzQ5YzAgNS41OTIgMy44MjQgMTAuMjkgOSAxMS42MjMgNS4xNzYtMS4zMzIgOS02LjAzIDktMTEuNjIyIDAtMS4zMS0uMjEtMi41NzEtLjU5OC0zLjc1MWgtLjE1MmMtMy4xOTYgMC02LjEtMS4yNDgtOC4yNS0zLjI4NVoiLz48L3N2Zz4=" alt="">Tidak Beresiko</span></td>
+                <td>
+                  <div class="row-actions">
+                    <button class="icon-btn" type="button" aria-label="Edit"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTYuODYyIDQuNDg3IDEuNjg3LTEuNjg4YTEuODc1IDEuODc1IDAgMSAxIDIuNjUyIDIuNjUyTDEwLjU4MiAxNi4wN2E0LjUgNC41IDAgMCAxLTEuODk3IDEuMTNMNiAxOGwuOC0yLjY4NWE0LjUgNC41IDAgMCAxIDEuMTMtMS44OTdsOC45MzItOC45MzFabTAgMEwxOS41IDcuMTI1TTE4IDE0djQuNzVBMi4yNSAyLjI1IDAgMCAxIDE1Ljc1IDIxSDUuMjVBMi4yNSAyLjI1IDAgMCAxIDMgMTguNzVWOC4yNUEyLjI1IDIuMjUgMCAwIDEgNS4yNSA2SDEwIi8+PC9zdmc+" alt=""></button>
+                    <button class="icon-btn" type="button" aria-label="Hapus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMzQ2IDltLTQuNzg4IDBMOS4yNiA5TTE5LjIyOCA1Ljc5Yy4zNDIuMDUyLjY4Mi4xMDcgMS4wMjIuMTY2bS0xLjAyMi0uMTY2TDE4LjE2IDE5LjY3M2EyLjI1IDIuMjUgMCAwIDEtMi4yNDQgMi4wNzdIOC4wODRhMi4yNSAyLjI1IDAgMCAxLTIuMjQ0LTIuMDc3TDQuNzcyIDUuNzltMTQuNDU2IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC0zLjQ3OC0uMzk3bS0xMiAuNTYyYy4zNC0uMDU5LjY4LS4xMTQgMS4wMjItLjE2NW0wIDBhNDguMTEgNDguMTEgMCAwIDEgMy40NzgtLjM5N203LjUgMHYtLjkxNmMwLTEuMTgtLjkxLTIuMTY0LTIuMDktMi4yMDFhNTEuOTY0IDUxLjk2NCAwIDAgMC0zLjMyIDBjLTEuMTguMDM3LTIuMDkgMS4wMjItMi4wOSAyLjIwMXYuOTE2bTcuNSAwYTQ4LjY2NyA0OC42NjcgMCAwIDAtNy41IDAiLz48L3N2Zz4=" alt=""></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pagination">
+            <p class="pagination__info" id="paginationInfo">Menampilkan 1 - 5 dari 1,482 data</p>
+            <div class="pagination__controls">
+              <button class="page-btn page-btn--nav page-btn--disabled" type="button" aria-label="Halaman sebelumnya"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTUuNzUgMTkuNSA4LjI1IDEybDcuNS03LjUiLz48L3N2Zz4=" alt=""></button>
+              <button class="page-btn page-btn--active" type="button">1</button>
+              <button class="page-btn" type="button">2</button>
+              <button class="page-btn" type="button">3</button>
+              <span class="page-ellipsis">...</span>
+              <button class="page-btn page-btn--nav" type="button" aria-label="Halaman berikutnya"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtOC4yNSA0LjUgNy41IDcuNS03LjUgNy41Ii8+PC9zdmc+" alt=""></button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- ============================================================
+           WIZARD — Figma nodes "Halaman Pengisian Catin pt1..pt6"
+           (16:305, 16:24, 23:258, 51:2, 54:2, 55:927)
+           Step 6 is labelled "Ringkasan" here for usability; in Figma
+           both step 5 and 6 wireframe labels literally read
+           "Tindak Lanjut" (appears to be a placeholder duplication).
+           ============================================================ -->
+      <div class="wizard" id="wizardView">
+        <div>
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <span>Form Pendataan</span>
+            <span aria-hidden="true">›</span>
+            <span>Data Diri Catin</span>
+          </nav>
+          <h1 class="wizard__title" id="wizardStepTitle">Pendaftaran Catin</h1>
+          <p class="wizard__subtitle" id="wizardStepSubtitle">Lengkapi informasi kelengkapan wilayah</p>
+        </div>
+
+        <div class="stepper" id="stepperNav">
+          <div class="step is-active" data-step="1">
+            <div class="step__circle">1</div>
+            <div class="step__label">Wilayah</div>
+          </div>
+          <div class="stepper__connector"></div>
+          <div class="step" data-step="2">
+            <div class="step__circle">2</div>
+            <div class="step__label">Data Diri<br>Catin Wanita</div>
+          </div>
+          <div class="stepper__connector"></div>
+          <div class="step" data-step="3">
+            <div class="step__circle">3</div>
+            <div class="step__label">Data Diri<br>Catin Pria</div>
+          </div>
+          <div class="stepper__connector"></div>
+          <div class="step" data-step="4">
+            <div class="step__circle">4</div>
+            <div class="step__label">Data<br>Kesehatan</div>
+          </div>
+          <div class="stepper__connector"></div>
+          <div class="step" data-step="5">
+            <div class="step__circle">5</div>
+            <div class="step__label">Tindak<br>Lanjut</div>
+          </div>
+          <div class="stepper__connector"></div>
+          <div class="step" data-step="6">
+            <div class="step__circle">6</div>
+            <div class="step__label">Ringkasan</div>
+          </div>
+        </div>
+
+        <form class="wizard-card" id="catinForm" novalidate>
+
+          <!-- STEP 1 — Wilayah -->
+          <section class="wizard-step is-active" data-step-panel="1">
+            <div class="field-grid">
+              <div class="field">
+                <label for="kemantren">Pilih Kemantren</label>
+                <select id="kemantren">
+                  <option value="">-- Pilih Kemantren --</option>
+                  <option>Kotagede</option>
+                  <option>Kraton</option>
+                  <option>Jetis</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="bulanLaporan">Bulan Laporan</label>
+                <div class="field-row">
+                  <select id="bulanLaporan">
+                    <option value="">Pilih bulan</option>
+                    <option>Januari</option><option>Februari</option><option>Maret</option>
+                    <option>April</option><option>Mei</option><option>Juni</option>
+                  </select>
+                  <select id="tahunLaporan">
+                    <option value="">Tahun</option>
+                    <option>2024</option><option>2025</option><option selected>2026</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="kelurahan">Pilih Kelurahan</label>
+                <select id="kelurahan">
+                  <option value="">-- Pilih Kelurahan --</option>
+                  <option>Kel. Kajeksan</option>
+                  <option>Kel. Glantengan</option>
+                  <option>Kel. Panjunan</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="tanggalKunjungan">Tanggal Kunjungan</label>
+                <input type="date" id="tanggalKunjungan">
+              </div>
+              <div class="field">
+                <label for="namaTpk">Pilih Nama TPK</label>
+                <input type="text" id="namaTpk" value="Maawar Melati" readonly>
+              </div>
+              <div class="field">
+                <label>Pratinjau Lokasi</label>
+                <div class="map-placeholder">
+                  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzlkYjNlMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOSA2Ljc1VjE1bTYtNnY4LjI1bS41MDMtMTEuODE1IDQuOTQtMi45MjhhLjg3Ljg3IDAgMCAxIDEuMzAyLjgwMnYxMC45NWwtNi4yNDIgMy43MWExLjg3IDEuODcgMCAwIDEtMS41MDMgMEw5LjUgMTQuOTc4VjQuMDI4YTEuODcgMS44NyAwIDAgMSAxLjUwMyAwbDMuNSAxLjkwNloiLz48L3N2Zz4=" alt="">
+                  <span>Peta lokasi akan tampil di sini</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 2 — Data Diri Catin Wanita -->
+          <section class="wizard-step" data-step-panel="2">
+            <fieldset class="fieldset">
+              <legend>Informasi Pribadi</legend>
+              <div class="field-grid">
+                <div class="field"><label for="nikWanita">NIK Calon Pengantin Wanita</label><input type="text" id="nikWanita" inputmode="numeric" maxlength="16" placeholder="16 digit NIK"></div>
+                <div class="field"><label for="namaWanita">Nama Lengkap Calon Pengantin Wanita</label><input type="text" id="namaWanita" placeholder="Sesuai KTP"></div>
+                <div class="field"><label for="tempatLahirWanita">Tempat Lahir</label><input type="text" id="tempatLahirWanita"></div>
+                <div class="field"><label for="tanggalLahirWanita">Tanggal Lahir</label><input type="date" id="tanggalLahirWanita"></div>
+              </div>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend>Informasi Alamat</legend>
+              <div class="field-grid field-grid--single">
+                <div class="field"><label for="alamatWanita">Alamat Lengkap</label><textarea id="alamatWanita" placeholder="Masukkan nama jalan, nomor rumah, atau patokan lainnya"></textarea></div>
+              </div>
+              <div class="field-grid">
+                <div class="field"><label for="provinsiWanita">Provinsi</label><select id="provinsiWanita"><option>D.I. Yogyakarta</option></select></div>
+                <div class="field"><label for="kabWanita">Kabupaten / Kota</label><select id="kabWanita"><option>Kota Yogyakarta</option></select></div>
+                <div class="field"><label for="kecWanita">Kecamatan</label><select id="kecWanita"><option value="">-- Pilih Kecamatan --</option></select></div>
+                <div class="field"><label for="kelWanita">Kelurahan</label><select id="kelWanita"><option value="">-- Pilih Kelurahan --</option></select></div>
+                <div class="field"><label for="rtWanita">RT</label><input type="text" id="rtWanita" inputmode="numeric"></div>
+                <div class="field"><label for="rwWanita">RW</label><input type="text" id="rwWanita" inputmode="numeric"></div>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- STEP 3 — Data Diri Catin Pria -->
+          <section class="wizard-step" data-step-panel="3">
+            <fieldset class="fieldset">
+              <legend>Informasi Pribadi</legend>
+              <div class="field-grid">
+                <div class="field"><label for="nikPria">NIK Calon Pengantin Laki-Laki</label><input type="text" id="nikPria" inputmode="numeric" maxlength="16" placeholder="16 digit NIK"></div>
+                <div class="field"><label for="namaPria">Nama Lengkap Calon Pengantin Laki-Laki</label><input type="text" id="namaPria" placeholder="Sesuai KTP"></div>
+                <div class="field"><label for="tempatLahirPria">Tempat Lahir</label><input type="text" id="tempatLahirPria"></div>
+                <div class="field"><label for="tanggalLahirPria">Tanggal Lahir</label><input type="date" id="tanggalLahirPria"></div>
+              </div>
+            </fieldset>
+            <fieldset class="fieldset">
+              <legend>Informasi Alamat</legend>
+              <div class="field-grid field-grid--single">
+                <div class="field"><label for="alamatPria">Alamat Lengkap</label><textarea id="alamatPria" placeholder="Masukkan nama jalan, nomor rumah, atau patokan lainnya"></textarea></div>
+              </div>
+              <div class="field-grid">
+                <div class="field"><label for="provinsiPria">Provinsi</label><select id="provinsiPria"><option>D.I. Yogyakarta</option></select></div>
+                <div class="field"><label for="kabPria">Kabupaten / Kota</label><select id="kabPria"><option>Kota Yogyakarta</option></select></div>
+                <div class="field"><label for="kecPria">Kecamatan</label><select id="kecPria"><option value="">-- Pilih Kecamatan --</option></select></div>
+                <div class="field"><label for="kelPria">Kelurahan</label><select id="kelPria"><option value="">-- Pilih Kelurahan --</option></select></div>
+                <div class="field"><label for="rtPria">RT</label><input type="text" id="rtPria" inputmode="numeric"></div>
+                <div class="field"><label for="rwPria">RW</label><input type="text" id="rwPria" inputmode="numeric"></div>
+              </div>
+            </fieldset>
+          </section>
+
+          <!-- STEP 4 — Data Kesehatan -->
+          <section class="wizard-step" data-step-panel="4">
+            <div class="tab-toggle" role="tablist" aria-label="Pilih calon pengantin">
+              <button type="button" class="is-active" data-health-tab="wanita">Wanita</button>
+              <button type="button" data-health-tab="pria">Pria</button>
+            </div>
+
+            <div class="health-panel is-active" data-health-panel="wanita">
+              <div class="field-grid">
+                <div class="field"><label for="tglPeriksaWanita">Tanggal Pemeriksaan</label><input type="date" id="tglPeriksaWanita"></div>
+                <div class="field"><label for="faskesWanita">Fasilitas Kesehatan (Faskes)</label><input type="text" id="faskesWanita" placeholder="Nama Puskesmas atau Rumah Sakit"></div>
+                <div class="field"><label for="beratWanita">Berat Badan (kg)</label><input type="number" id="beratWanita" class="imt-input" data-imt-target="wanita" step="0.1"></div>
+                <div class="field"><label for="tinggiWanita">Tinggi Badan (cm)</label><input type="number" id="tinggiWanita" class="imt-input" data-imt-target="wanita" step="0.1"></div>
+                <div class="field"><label for="hbWanita">Kadar Hemoglobin (Hb)</label><input type="number" id="hbWanita" step="0.1"></div>
+                <div class="field"><label for="lilaWanita">Lingkar Lengan (LiLA)</label><input type="number" id="lilaWanita" step="0.1"></div>
+              </div>
+              <div class="field">
+                <label>Indeks Massa Tubuh (IMT) — otomatis</label>
+                <div class="imt-readout"><strong id="imtWanita">–</strong><span class="imt-tag" id="imtWanitaTag">Belum dihitung</span></div>
+              </div>
+              <div class="field">
+                <label>Apakah calon pengantin wanita merokok aktif? atau terkena paparan rokok?</label>
+                <div class="radio-group">
+                  <label class="radio-option"><input type="radio" name="merokokWanita" value="ya"> Ya</label>
+                  <label class="radio-option"><input type="radio" name="merokokWanita" value="tidak" checked> Tidak</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="health-panel" data-health-panel="pria">
+              <div class="field-grid">
+                <div class="field"><label for="tglPeriksaPria">Tanggal Pemeriksaan</label><input type="date" id="tglPeriksaPria"></div>
+                <div class="field"><label for="faskesPria">Fasilitas Kesehatan (Faskes)</label><input type="text" id="faskesPria" placeholder="Nama Puskesmas atau Rumah Sakit"></div>
+                <div class="field"><label for="beratPria">Berat Badan (kg)</label><input type="number" id="beratPria" class="imt-input" data-imt-target="pria" step="0.1"></div>
+                <div class="field"><label for="tinggiPria">Tinggi Badan (cm)</label><input type="number" id="tinggiPria" class="imt-input" data-imt-target="pria" step="0.1"></div>
+              </div>
+              <div class="field">
+                <label>Indeks Massa Tubuh (IMT) — otomatis</label>
+                <div class="imt-readout"><strong id="imtPria">–</strong><span class="imt-tag" id="imtPriaTag">Belum dihitung</span></div>
+              </div>
+              <div class="field">
+                <label>Apakah calon pengantin Pria merokok aktif? atau terkena paparan rokok?</label>
+                <div class="radio-group">
+                  <label class="radio-option"><input type="radio" name="merokokPria" value="ya"> Ya</label>
+                  <label class="radio-option"><input type="radio" name="merokokPria" value="tidak" checked> Tidak</label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 5 — Tindak Lanjut -->
+          <section class="wizard-step" data-step-panel="5">
+            <div class="field-grid">
+              <div class="field">
+                <label for="statusTindakLanjut">Status Tindak Lanjut</label>
+                <select id="statusTindakLanjut">
+                  <option>Selesai Dipantau</option>
+                  <option>Perlu Pemantauan Lanjutan</option>
+                  <option>Dirujuk ke Puskesmas</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="rencanaKunjungan">Rencana Kunjungan Berikutnya</label>
+                <input type="date" id="rencanaKunjungan">
+              </div>
+            </div>
+            <div class="field-grid field-grid--single">
+              <div class="field">
+                <label for="catatanKader">Catatan &amp; Rekomendasi Kader</label>
+                <textarea id="catatanKader" placeholder="Tuliskan catatan pemeriksaan, edukasi yang sudah diberikan, atau rekomendasi tindak lanjut."></textarea>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 6 — Ringkasan -->
+          <section class="wizard-step" data-step-panel="6">
+            <div class="summary-grid" id="summaryGrid">
+              <!-- filled by JS -->
+            </div>
+          </section>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="wizard-footer" id="wizardFooter" style="display:none;">
+    <div class="wizard-footer__left">
+      <button type="button" class="btn btn--footer-outline" id="cancelBtn"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM0NDQ2NTMiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTYgMTggMTggNk02IDZsMTIgMTIiLz48L3N2Zz4=" alt="">Batal</button>
+      <button type="button" class="btn btn--footer-dark-outline" id="prevBtn" disabled><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTAuNSAxOS41IDMgMTJtMCAwIDcuNS03LjVNMyAxMmgxOCIvPjwvc3ZnPg==" alt="">Sebelumnya</button>
+    </div>
+    <button type="button" class="btn btn--footer-primary" id="nextBtn">
+      <span>Selanjutnya</span>
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZT0iI2ZmZmZmZiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuMjUgOC4yNSAyMSAxMm0wIDAtMy43NSAzLjc1TTIxIDEySDMiLz48L3N2Zz4=" alt="">
+    </button>
+  </div>
+
+  <div class="toast" id="toast">
+    <span class="toast__icon"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2U9IiNmZmZmZmYiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTQuNSAxMi43NSAxMC41IDE4Ljc1IDE5LjUgNS4yNSIvPjwvc3ZnPg==" alt=""></span>
+    <span>Data Catin baru berhasil disimpan.</span>
+  </div>
+
+  <script>
+    (function () {
+      var TOTAL_STEPS = 6;
+      var currentStep = 1;
+
+      var listView = document.getElementById('listView');
+      var wizardView = document.getElementById('wizardView');
+      var wizardFooter = document.getElementById('wizardFooter');
+      var openBtn = document.getElementById('openWizardBtn');
+      var cancelBtn = document.getElementById('cancelBtn');
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      var stepTitleEl = document.getElementById('wizardStepTitle');
+      var stepSubtitleEl = document.getElementById('wizardStepSubtitle');
+      var toast = document.getElementById('toast');
+
+      var stepMeta = {
+        1: { title: 'Pendaftaran Catin', subtitle: 'Lengkapi informasi kelengkapan wilayah.' },
+        2: { title: 'Pendaftaran Catin (Wanita)', subtitle: 'Lengkapi data diri calon pengantin wanita.' },
+        3: { title: 'Pendaftaran Catin (Pria)', subtitle: 'Lengkapi data diri calon pengantin pria.' },
+        4: { title: 'Pemeriksaan Kesehatan', subtitle: 'Silakan lengkapi data pemeriksaan kesehatan terbaru calon pengantin.' },
+        5: { title: 'Tindak Lanjut', subtitle: 'Catat rencana dan rekomendasi tindak lanjut kader.' },
+        6: { title: 'Ringkasan Data Catin', subtitle: 'Periksa kembali data sebelum disimpan.' }
+      };
+
+      function showWizard() {
+        listView.classList.add('is-hidden');
+        wizardView.classList.add('is-active');
+        wizardFooter.style.display = 'flex';
+        goToStep(1);
+      }
+
+      function hideWizard() {
+        wizardView.classList.remove('is-active');
+        listView.classList.remove('is-hidden');
+        wizardFooter.style.display = 'none';
+        document.getElementById('catinForm').reset();
+        resetImt('wanita');
+        resetImt('pria');
+      }
+
+      function goToStep(step) {
+        currentStep = step;
+
+        document.querySelectorAll('.wizard-step').forEach(function (panel) {
+          panel.classList.toggle('is-active', Number(panel.getAttribute('data-step-panel')) === step);
+        });
+
+        document.querySelectorAll('.step').forEach(function (el) {
+          var n = Number(el.getAttribute('data-step'));
+          el.classList.toggle('is-active', n === step);
+          el.classList.toggle('is-done', n < step);
+        });
+
+        document.querySelectorAll('.stepper__connector').forEach(function (el, idx) {
+          el.classList.toggle('is-done', idx + 1 < step);
+        });
+
+        stepTitleEl.textContent = stepMeta[step].title;
+        stepSubtitleEl.textContent = stepMeta[step].subtitle;
+
+        prevBtn.disabled = step === 1;
+        nextBtn.querySelector('span').textContent = step === TOTAL_STEPS ? 'Simpan Data' : 'Selanjutnya';
+
+        if (step === TOTAL_STEPS) buildSummary();
+      }
+
+      openBtn.addEventListener('click', showWizard);
+      cancelBtn.addEventListener('click', hideWizard);
+
+      prevBtn.addEventListener('click', function () {
+        if (currentStep > 1) goToStep(currentStep - 1);
+      });
+
+      nextBtn.addEventListener('click', function () {
+        if (currentStep < TOTAL_STEPS) {
+          goToStep(currentStep + 1);
+        } else {
+          saveData();
+        }
+      });
+
+      // Step-2 tab switch for health data
+      document.querySelectorAll('[data-health-tab]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = btn.getAttribute('data-health-tab');
+          document.querySelectorAll('[data-health-tab]').forEach(function (b) {
+            b.classList.toggle('is-active', b === btn);
+          });
+          document.querySelectorAll('[data-health-panel]').forEach(function (p) {
+            p.classList.toggle('is-active', p.getAttribute('data-health-panel') === target);
+          });
+        });
+      });
+
+      // Auto-calculate IMT
+      function calcImt(who) {
+        var berat = parseFloat(document.getElementById('berat' + capitalize(who)).value);
+        var tinggi = parseFloat(document.getElementById('tinggi' + capitalize(who)).value);
+        var out = document.getElementById('imt' + capitalize(who));
+        var tag = document.getElementById('imt' + capitalize(who) + 'Tag');
+        if (!berat || !tinggi) { out.textContent = '–'; tag.textContent = 'Belum dihitung'; return; }
+        var m = tinggi / 100;
+        var imt = berat / (m * m);
+        out.textContent = imt.toFixed(1);
+        var label = imt < 18.5 ? 'Kurus' : imt < 25 ? 'Normal' : imt < 30 ? 'Gemuk' : 'Obesitas';
+        tag.textContent = label;
+      }
+
+      function resetImt(who) {
+        document.getElementById('imt' + capitalize(who)).textContent = '–';
+        document.getElementById('imt' + capitalize(who) + 'Tag').textContent = 'Belum dihitung';
+      }
+
+      function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+      document.querySelectorAll('.imt-input').forEach(function (input) {
+        input.addEventListener('input', function () {
+          calcImt(input.getAttribute('data-imt-target'));
+        });
+      });
+
+      function val(id) {
+        var el = document.getElementById(id);
+        if (!el) return '';
+        return el.value && el.value.trim() ? el.value : '—';
+      }
+
+      function radioVal(name) {
+        var el = document.querySelector('input[name="' + name + '"]:checked');
+        return el ? (el.value === 'ya' ? 'Ya' : 'Tidak') : '—';
+      }
+
+      function buildSummary() {
+        var grid = document.getElementById('summaryGrid');
+        grid.innerHTML =
+          '<div class="summary-block"><h4>Wilayah</h4><dl>' +
+            row('Kemantren', val('kemantren')) +
+            row('Kelurahan', val('kelurahan')) +
+            row('Tanggal Kunjungan', val('tanggalKunjungan')) +
+            row('Nama TPK', val('namaTpk')) +
+          '</dl></div>' +
+          '<div class="summary-block"><h4>Catin Wanita</h4><dl>' +
+            row('Nama', val('namaWanita')) +
+            row('NIK', val('nikWanita')) +
+            row('Tempat, Tgl Lahir', val('tempatLahirWanita') + ', ' + val('tanggalLahirWanita')) +
+          '</dl></div>' +
+          '<div class="summary-block"><h4>Catin Pria</h4><dl>' +
+            row('Nama', val('namaPria')) +
+            row('NIK', val('nikPria')) +
+            row('Tempat, Tgl Lahir', val('tempatLahirPria') + ', ' + val('tanggalLahirPria')) +
+          '</dl></div>' +
+          '<div class="summary-block"><h4>Kesehatan</h4><dl>' +
+            row('IMT Wanita', document.getElementById('imtWanita').textContent) +
+            row('IMT Pria', document.getElementById('imtPria').textContent) +
+            row('Merokok (W/P)', radioVal('merokokWanita') + ' / ' + radioVal('merokokPria')) +
+          '</dl></div>' +
+          '<div class="summary-block" style="grid-column: 1 / -1;"><h4>Tindak Lanjut</h4><dl>' +
+            row('Status', val('statusTindakLanjut')) +
+            row('Rencana Kunjungan', val('rencanaKunjungan')) +
+            row('Catatan', val('catatanKader')) +
+          '</dl></div>';
+      }
+
+      function row(label, value) {
+        return '<div class="summary-row"><dt>' + label + '</dt><dd>' + value + '</dd></div>';
+      }
+
+      function saveData() {
+        var nama = val('namaWanita') + ' & ' + val('namaPria');
+        var nik = val('nikWanita') !== '—' ? val('nikWanita') : '—';
+        var kel = val('kelurahan');
+        var isRisk = radioVal('merokokWanita') === 'Ya' || radioVal('merokokPria') === 'Ya';
+
+        var tbody = document.getElementById('catinTableBody');
+        var rowCount = tbody.querySelectorAll('tr').length + 1;
+        var tr = document.createElement('tr');
+        tr.className = 'is-new';
+        tr.innerHTML =
+          '<td>' + rowCount + '.</td>' +
+          '<td><p class="pair-name">' + escapeHtml(nama) + '</p><p class="pair-kel">' + escapeHtml(kel) + '</p></td>' +
+          '<td class="nik-cell">' + escapeHtml(nik) + '</td>' +
+          '<td>' + (isRisk
+            ? '<span class="badge badge--risk"><img src="' + document.querySelector('.badge--risk img').src + '" alt="">Beresiko</span>'
+            : '<span class="badge badge--safe"><img src="' + document.querySelector('.badge--safe img').src + '" alt="">Tidak Beresiko</span>') +
+          '</td>' +
+          '<td><div class="row-actions">' +
+            '<button class="icon-btn" type="button" aria-label="Edit"><img src="' + document.querySelector('.icon-btn img').src + '" alt=""></button>' +
+            '<button class="icon-btn" type="button" aria-label="Hapus"><img src="' + document.querySelectorAll('.icon-btn img')[1].src + '" alt=""></button>' +
+          '</div></td>';
+        tbody.prepend(tr);
+
+        var totalEl = document.getElementById('totalTerdaftar');
+        var current = parseInt(totalEl.textContent.replace(/\./g, ''), 10) || 0;
+        totalEl.textContent = (current + 1).toLocaleString('id-ID');
+
+        hideWizard();
+        showToast();
+      }
+
+      function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+        });
+      }
+
+      function showToast() {
+        toast.classList.add('is-visible');
+        window.setTimeout(function () { toast.classList.remove('is-visible'); }, 3200);
+      }
+    })();
+  </script>
+</body>
+</html>

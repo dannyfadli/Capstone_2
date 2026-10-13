@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halaman Beranda — Kader TPK</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       DESKTOP / TABLET LAYOUT (hidden ≤768px)
+       Source: Figma node "Halaman Beranda Kader" (1:93)
+       ============================================================ -->
+  <div class="app">
+        <aside class="sidebar" aria-label="Navigasi utama">
+      <div>
+        <div class="sidebar__brand">
+          <h2 class="sidebar__title">Kader TPK</h2>
+          <p class="sidebar__subtitle">Pemerintah Kota Yogyakarta</p>
+        </div>
+        <nav class="sidebar__nav">
+          <a class="sidebar__link sidebar__link--active" href="halaman-beranda.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+            <span>Beranda</span>
+          </a>
+          <a class="sidebar__link" href="halaman-catin.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+            <span>Catin</span>
+          </a>
+          <a class="sidebar__link" href="halaman-bumil.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+            <span>Ibu Hamil</span>
+          </a>
+          <a class="sidebar__link" href="halaman-bulin.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Z"/></svg>
+            <span>Pasca Salin</span>
+          </a>
+          <a class="sidebar__link" href="halaman-baduta.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+            <span>Baduta</span>
+          </a>
+          <a class="sidebar__link" href="halaman-balita.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 7a7 7 0 0 1 14 0H5Z"/></svg>
+            <span>Balita</span>
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar__footer">
+        <a class="sidebar__footer-link" href="#">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+          <span>Pusat Bantuan</span>
+        </a>
+        <a class="sidebar__footer-link sidebar__footer-link--strong" href="halaman-login.html" style="color:#dc2626;">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
+          <span>Keluar</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar__account">
+          <div>
+            <p class="topbar__name">Admin Kader</p>
+            <p class="topbar__role">Petugas TPK</p>
+          </div>
+          <div class="topbar__avatar">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NU0xNSA5Ljc1YTMgMyAwIDEgMS02IDAgMyAzIDAgMCAxIDYgMFptNiAyLjI1YTkgOSAwIDEgMS0xOCAwIDkgOSAwIDAgMSAxOCAwWiIvPjwvc3ZnPg==" alt="Foto profil">
+          </div>
+        </div>
+      </header>
+
+      <main class="canvas">
+        <section aria-label="Sambutan">
+          <h1 class="welcome-heading">Selamat datang, [Nama Kader]</h1>
+        </section>
+
+        <section aria-labelledby="summary-heading">
+          <div class="summary-header">
+            <h2 id="summary-heading" class="summary-heading">Ringkasan Data</h2>
+            <div class="date-chip">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNNi43NSAzdjIuMjVNMTcuMjUgM3YyLjI1TTMgMTguNzVWNy41YTIuMjUgMi4yNSAwIDAgMSAyLjI1LTIuMjVoMTMuNUEyLjI1IDIuMjUgMCAwIDEgMjEgNy41djExLjI1bS0xOCAwQTIuMjUgMi4yNSAwIDAgMCA1LjI1IDIxaDEzLjVBMi4yNSAyLjI1IDAgMCAwIDIxIDE4Ljc1bS0xOCAwdi03LjVBMi4yNSAyLjI1IDAgMCAxIDUuMjUgOWgxMy41QTIuMjUgMi4yNSAwIDAgMSAyMSAxMS4yNXY3LjUiLz48L3N2Zz4=" alt="">
+              <span>-- / --/ ----</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="stat-grid" aria-label="Statistik ringkasan">
+          <article class="stat-card">
+            <div class="stat-card__head">
+              <p class="stat-card__label">Catin</p>
+              <img class="stat-card__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTUgMTkuMTI4YTkuMzggOS4zOCAwIDAgMCAyLjYyNS4zNzIgOS4zMzcgOS4zMzcgMCAwIDAgNC4xMjEtLjk1MiA0LjEyNSA0LjEyNSAwIDAgMC03LjUzMy0yLjQ5M00xNSAxOS4xMjh2LS4wMDNjMC0xLjExMy0uMjg1LTIuMTYtLjc4Ni0zLjA3TTE1IDE5LjEyOHYuMTA2QTEyLjMxOCAxMi4zMTggMCAwIDEgOC42MjQgMjFjLTIuMzMxIDAtNC41MTItLjY0NS02LjM3NC0xLjc2NmwtLjAwMS0uMTA5YTYuMzc1IDYuMzc1IDAgMCAxIDExLjk2NC0zLjA3TTEyIDYuMzc1YTMuMzc1IDMuMzc1IDAgMSAxLTYuNzUgMCAzLjM3NSAzLjM3NSAwIDAgMSA2Ljc1IDBabTguMjUgMi4yNWEyLjYyNSAyLjYyNSAwIDEgMS01LjI1IDAgMi42MjUgMi42MjUgMCAwIDEgNS4yNSAwWiIvPjwvc3ZnPg==" alt="">
+            </div>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">0</p>
+              <p class="stat-card__value-label">Total</p>
+            </div>
+            <div class="stat-card__track"></div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card__head">
+              <p class="stat-card__label">Ibu Hamil</p>
+              <img class="stat-card__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2NiZDVlMSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NW0xMS45NjMgMGE5IDkgMCAxIDAtMTEuOTYzIDBtMTEuOTYzIDBBOC45NjYgOC45NjYgMCAwIDEgMTIgMjFhOC45NjYgOC45NjYgMCAwIDEtNS45ODItMi4yNzVNMTUgOS43NWEzIDMgMCAxIDEtNiAwIDMgMyAwIDAgMSA2IDBaIi8+PC9zdmc+" alt="">
+            </div>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">0</p>
+              <p class="stat-card__value-label">Total</p>
+            </div>
+            <div class="stat-card__track"></div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card__head">
+              <p class="stat-card__label">Pascasalin</p>
+              <img class="stat-card__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2NiZDVlMSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOS43NSA5Ljc1YzAgLjQxNC0uMTY4Ljc1LS4zNzUuNzVTOSAxMC4xNjQgOSA5Ljc1IDkuMTY4IDkgOS4zNzUgOXMuMzc1LjMzNi4zNzUuNzVabS0uMzc1IDBoLjAwOHYuMDE1aC0uMDA4VjkuNzVabTUuNjI1IDBjMCAuNDE0LS4xNjguNzUtLjM3NS43NXMtLjM3NS0uMzM2LS4zNzUtLjc1LjE2OC0uNzUuMzc1LS43NS4zNzUuMzM2LjM3NS43NVptLS4zNzUgMGguMDA4di4wMTVoLS4wMDhWOS43NU0yMSAxMmE5IDkgMCAxIDEtMTggMCA5IDkgMCAwIDEgMTggMFoiLz48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik05IDE1Ljc1czEuNSAxLjUgMyAxLjUgMy0xLjUgMy0xLjUiLz48L3N2Zz4=" alt="">
+            </div>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">0</p>
+              <p class="stat-card__value-label">Total</p>
+            </div>
+            <div class="stat-card__track"></div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card__head">
+              <p class="stat-card__label">Baduta</p>
+              <img class="stat-card__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2NiZDVlMSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOS43NSA5Ljc1YzAgLjQxNC0uMTY4Ljc1LS4zNzUuNzVTOSAxMC4xNjQgOSA5Ljc1IDkuMTY4IDkgOS4zNzUgOXMuMzc1LjMzNi4zNzUuNzVabS0uMzc1IDBoLjAwOHYuMDE1aC0uMDA4VjkuNzVabTUuNjI1IDBjMCAuNDE0LS4xNjguNzUtLjM3NS43NXMtLjM3NS0uMzM2LS4zNzUtLjc1LjE2OC0uNzUuMzc1LS43NS4zNzUuMzM2LjM3NS43NVptLS4zNzUgMGguMDA4di4wMTVoLS4wMDhWOS43NU0yMSAxMmE5IDkgMCAxIDEtMTggMCA5IDkgMCAwIDEgMTggMFoiLz48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik05IDE1Ljc1czEuNSAxLjUgMyAxLjUgMy0xLjUgMy0xLjUiLz48L3N2Zz4=" alt="">
+            </div>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">0</p>
+              <p class="stat-card__value-label">Total</p>
+            </div>
+            <div class="stat-card__track"></div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card__head">
+              <p class="stat-card__label">Balita</p>
+              <img class="stat-card__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2NiZDVlMSI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NW0xMS45NjMgMGE5IDkgMCAxIDAtMTEuOTYzIDBtMTEuOTYzIDBBOC45NjYgOC45NjYgMCAwIDEgMTIgMjFhOC45NjYgOC45NjYgMCAwIDEtNS45ODItMi4yNzVNMTUgOS43NWEzIDMgMCAxIDEtNiAwIDMgMyAwIDAgMSA2IDBaIi8+PC9zdmc+" alt="">
+            </div>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">0</p>
+              <p class="stat-card__value-label">Total</p>
+            </div>
+            <div class="stat-card__track"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MOBILE LAYOUT (shown ≤768px)
+       Source: Figma nodes "Halaman Beranda (web Mobile)" (1:208)
+               + drawer "Side bar (Wibe Mobile)" (14:2)
+       ============================================================ -->
+  <div class="mobile-app">
+    <header class="mobile-topbar">
+      <div class="mobile-topbar__left">
+        <button type="button" class="mobile-topbar__menu-btn" id="drawerOpenBtn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobileDrawer">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM0NDQ2NTMiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTMuNzUgNi43NWgxNi41TTMuNzUgMTJoMTYuNW0tMTYuNSA1LjI1aDE2LjUiLz48L3N2Zz4=" alt="">
+        </button>
+        <h1 class="mobile-topbar__title">Nama WEB</h1>
+      </div>
+      <div class="mobile-topbar__avatar">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NU0xNSA5Ljc1YTMgMyAwIDEgMS02IDAgMyAzIDAgMCAxIDYgMFptNiAyLjI1YTkgOSAwIDEgMS0xOCAwIDkgOSAwIDAgMSAxOCAwWiIvPjwvc3ZnPg==" alt="Foto profil">
+      </div>
+    </header>
+
+    <main class="mobile-main">
+      <h2 class="mobile-welcome">Selamat datang, [Nama Kader]</h2>
+
+      <section class="mobile-summary" aria-label="Ringkasan data">
+        <div class="mobile-summary__head">
+          <p class="mobile-summary__heading">Data Ringkasan</p>
+          <div class="mobile-date-chip">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzc1NzY4NCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNNi43NSAzdjIuMjVNMTcuMjUgM3YyLjI1TTMgMTguNzVWNy41YTIuMjUgMi4yNSAwIDAgMSAyLjI1LTIuMjVoMTMuNUEyLjI1IDIuMjUgMCAwIDEgMjEgNy41djExLjI1bS0xOCAwQTIuMjUgMi4yNSAwIDAgMCA1LjI1IDIxaDEzLjVBMi4yNSAyLjI1IDAgMCAwIDIxIDE4Ljc1bS0xOCAwdi03LjVBMi4yNSAyLjI1IDAgMCAxIDUuMjUgOWgxMy41QTIuMjUgMi4yNSAwIDAgMSAyMSAxMS4yNXY3LjUiLz48L3N2Zz4=" alt="">
+            <span>--/--/----</span>
+          </div>
+        </div>
+
+        <div class="mobile-stat-grid">
+          <article class="mobile-stat-card mobile-stat-card--wide">
+            <p class="mobile-stat-card__value">0</p>
+            <p class="mobile-stat-card__label">Total Catin</p>
+          </article>
+          <article class="mobile-stat-card">
+            <p class="mobile-stat-card__value">0</p>
+            <p class="mobile-stat-card__label">Total Ibu Hamil</p>
+          </article>
+          <article class="mobile-stat-card">
+            <p class="mobile-stat-card__value">0</p>
+            <p class="mobile-stat-card__label">Total Pascasalin</p>
+          </article>
+          <article class="mobile-stat-card">
+            <p class="mobile-stat-card__value">0</p>
+            <p class="mobile-stat-card__label">Total Baduta</p>
+          </article>
+          <article class="mobile-stat-card">
+            <p class="mobile-stat-card__value">0</p>
+            <p class="mobile-stat-card__label">Total Balita</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Drawer overlay + panel -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <nav class="drawer" id="mobileDrawer" aria-label="Navigasi (mobile)">
+      <div class="drawer__header">
+        <p class="drawer__title">Kader TPK</p>
+        <button type="button" class="drawer__close" id="drawerCloseBtn" aria-label="Tutup menu navigasi">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM0NDQ2NTMiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTYgMTggMTggNk02IDZsMTIgMTIiLz48L3N2Zz4=" alt="">
+        </button>
+      </div>
+
+      <div class="drawer__nav">
+        <ul class="drawer__list">
+          <li>
+            <a class="drawer__link drawer__link--active" href="#" aria-current="page">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2ZmZmZmZiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMi4yNSAxMiA4Ljk1NC04Ljk1NWMuNDQtLjQzOSAxLjE1Mi0uNDM5IDEuNTkxIDBMMjEuNzUgMTJNNC41IDkuNzV2MTAuMTI1YzAgLjYyMS41MDQgMS4xMjUgMS4xMjUgMS4xMjVIOS43NXYtNC44NzVjMC0uNjIxLjUwNC0xLjEyNSAxLjEyNS0xLjEyNWgyLjI1Yy42MjEgMCAxLjEyNS41MDQgMS4xMjUgMS4xMjVWMjFoNC4xMjVjLjYyMSAwIDEuMTI1LS41MDQgMS4xMjUtMS4xMjVWOS43NU04LjI1IDIxaDguMjUiLz48L3N2Zz4=" alt="">
+              <span>Beranda</span>
+            </a>
+          </li>
+          <li>
+            <a class="drawer__link" href="#">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMjEgOC4yNWMwLTIuNDg1LTIuMDk5LTQuNS00LjY4OC00LjUtMS45MzUgMC0zLjU5NyAxLjEyNi00LjMxMiAyLjczMy0uNzE1LTEuNjA3LTIuMzc3LTIuNzMzLTQuMzEzLTIuNzMzQzUuMSAzLjc1IDMgNS43NjUgMyA4LjI1YzAgNy4yMiA5IDEyIDkgMTJzOS00Ljc4IDktMTJaIi8+PC9zdmc+" alt="">
+              <span>Catin</span>
+            </a>
+          </li>
+          <li>
+            <a class="drawer__link" href="#">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NW0xMS45NjMgMGE5IDkgMCAxIDAtMTEuOTYzIDBtMTEuOTYzIDBBOC45NjYgOC45NjYgMCAwIDEgMTIgMjFhOC45NjYgOC45NjYgMCAwIDEtNS45ODItMi4yNzVNMTUgOS43NWEzIDMgMCAxIDEtNiAwIDMgMyAwIDAgMSA2IDBaIi8+PC9zdmc+" alt="">
+              <span>Ibu Hamil</span>
+            </a>
+          </li>
+          <li>
+            <a class="drawer__link" href="#">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOS43NSA5Ljc1YzAgLjQxNC0uMTY4Ljc1LS4zNzUuNzVTOSAxMC4xNjQgOSA5Ljc1IDkuMTY4IDkgOS4zNzUgOXMuMzc1LjMzNi4zNzUuNzVabS0uMzc1IDBoLjAwOHYuMDE1aC0uMDA4VjkuNzVabTUuNjI1IDBjMCAuNDE0LS4xNjguNzUtLjM3NS43NXMtLjM3NS0uMzM2LS4zNzUtLjc1LjE2OC0uNzUuMzc1LS43NS4zNzUuMzM2LjM3NS43NVptLS4zNzUgMGguMDA4di4wMTVoLS4wMDhWOS43NU0yMSAxMmE5IDkgMCAxIDEtMTggMCA5IDkgMCAwIDEgMTggMFoiLz48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik05IDE1Ljc1czEuNSAxLjUgMyAxLjUgMy0xLjUgMy0xLjUiLz48L3N2Zz4=" alt="">
+              <span>Pasca Salin</span>
+            </a>
+          </li>
+          <li>
+            <a class="drawer__link" href="#">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NW0xMS45NjMgMGE5IDkgMCAxIDAtMTEuOTYzIDBtMTEuOTYzIDBBOC45NjYgOC45NjYgMCAwIDEgMTIgMjFhOC45NjYgOC45NjYgMCAwIDEtNS45ODItMi4yNzVNMTUgOS43NWEzIDMgMCAxIDEtNiAwIDMgMyAwIDAgMSA2IDBaIi8+PC9zdmc+" alt="">
+              <span>Baduta/Balita</span>
+            </a>
+          </li>
+          <li>
+            <a class="drawer__link" href="#">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTIgNnY2aDQuNW00LjUgMGE5IDkgMCAxIDEtMTggMCA5IDkgMCAwIDEgMTggMFoiLz48L3N2Zz4=" alt="">
+              <span>Riwayat</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="drawer__footer">
+        <a class="drawer__footer-link" href="#">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOS44NzkgNy41MTljMS4xNzEtMS4wMjUgMy4wNzEtMS4wMjUgNC4yNDIgMCAxLjE3MiAxLjAyNSAxLjE3MiAyLjY4NyAwIDMuNzEyLS4yMDMuMTc5LS40My4zMjYtLjY3LjQ0Mi0uNzQ1LjM2MS0xLjQ1Ljk5OS0xLjQ1IDEuODI3di43NU0yMSAxMmE5IDkgMCAxIDEtMTggMCA5IDkgMCAwIDEgMTggMFoiLz48cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0xMiAxNy4yNWguMDA4di4wMDhIMTJ2LS4wMDhaIi8+PC9zdmc+" alt="">
+          <span>Pusat Bantuan</span>
+        </a>
+        <a class="drawer__footer-link drawer__footer-link--danger" href="#">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iI2RjMjYyNiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTUuNzUgOVY1LjI1QTIuMjUgMi4yNSAwIDAgMCAxMy41IDNoLTZhMi4yNSAyLjI1IDAgMCAwLTIuMjUgMi4yNXYxMy41QTIuMjUgMi4yNSAwIDAgMCA3LjUgMjFoNmEyLjI1IDIuMjUgMCAwIDAgMi4yNS0yLjI1VjE1TTEyIDlsLTMgM20wIDAgMyAzbS0zLTNoMTIuNzUiLz48L3N2Zz4=" alt="">
+          <span>Keluar</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    (function () {
+      var openBtn = document.getElementById('drawerOpenBtn');
+      var closeBtn = document.getElementById('drawerCloseBtn');
+      var drawer = document.getElementById('mobileDrawer');
+      var overlay = document.getElementById('drawerOverlay');
+
+      function openDrawer() {
+        drawer.classList.add('is-open');
+        overlay.classList.add('is-open');
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        openBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      openBtn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeDrawer();
+      });
+    })();
+  </script>
+</body>
+</html>

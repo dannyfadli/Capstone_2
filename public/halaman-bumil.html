@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibu Hamil — Kader TPK Kota Yogyakarta</title>
+<meta name="description" content="Halaman pendataan dan pemantauan ibu hamil oleh Kader TPK Pemerintah Kota Yogyakarta.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .badge--belum { background-color:#f1f5f9; color:#64748b; border:1px solid #cbd5e1; }
+
+  /* Wizard overlay modal */
+  .modal-backdrop { display:none; position:fixed; inset:0; background:rgba(15,23,42,0.55); z-index:40; align-items:flex-start; justify-content:center; overflow-y:auto; padding:24px 16px; }
+  .modal-backdrop.is-active { display:flex; }
+  .modal { background:#fff; border-radius:8px; width:100%; max-width:860px; display:flex; flex-direction:column; box-shadow:0 20px 60px rgba(0,0,0,0.25); position:relative; margin:auto; }
+  .modal__header { display:flex; align-items:flex-start; justify-content:space-between; padding:20px 24px 16px; border-bottom:1px solid #e2e8f0; gap:12px; }
+  .modal__title { margin:0; font-size:18px; font-weight:700; color:#0b1c30; }
+  .modal__subtitle { margin:4px 0 0; font-size:13px; color:#64748b; }
+  .modal__body { padding:0 24px; overflow-y:auto; max-height:62vh; }
+  .modal__footer { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-top:1px solid #e2e8f0; flex-shrink:0; }
+
+  /* Stepper */
+  .mstepper { display:flex; align-items:center; padding:16px 24px 0; overflow-x:auto; }
+  .mstep { display:flex; flex-direction:column; align-items:center; flex-shrink:0; min-width:72px; }
+  .mstep__num { width:28px; height:28px; border-radius:50%; border:2px solid #c4c5d5; background:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; color:#64748b; transition:all 150ms ease; }
+  .mstep__lbl { margin-top:4px; font-size:10px; color:#64748b; text-align:center; line-height:13px; white-space:nowrap; }
+  .mstep.is-active .mstep__num { border-color:#444653; color:#444653; font-weight:700; }
+  .mstep.is-active .mstep__lbl { font-weight:700; color:#444653; }
+  .mstep.is-done .mstep__num { background:#444653; border-color:#444653; color:#fff; }
+  .mstep.is-done .mstep__lbl { color:#444653; }
+  .mconn { flex:1; height:2px; background:#c4c5d5; min-width:8px; margin-top:-10px; }
+  .mconn.is-done { background:#444653; }
+
+  /* Panel */
+  .mpanel { display:none; flex-direction:column; gap:20px; padding:20px 0; }
+  .mpanel.is-active { display:flex; }
+
+  /* Fields */
+  .fg { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px 20px; }
+  .fg--1 { grid-template-columns:1fr; }
+  .fg--3 { grid-template-columns:repeat(3, minmax(0,1fr)); }
+  .fld { display:flex; flex-direction:column; gap:5px; }
+  .fld label { font-size:12px; font-weight:600; color:#444653; }
+  .fld label .req { color:#dc2626; }
+  .fld input, .fld select, .fld textarea {
+    width:100%; padding:9px 12px; border:1.5px solid #c4c5d5; border-radius:4px;
+    font-size:14px; color:#0b1c30; background:#fff; outline:none; font-family:inherit;
+    transition:border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .fld input:focus, .fld select:focus, .fld textarea:focus { border-color:#444653; box-shadow:0 0 0 3px rgba(68,70,83,0.12); }
+  .fld input[readonly], .fld input[disabled] { background:#eff4ff; color:#64748b; }
+  .fld textarea { resize:vertical; min-height:80px; }
+  .fld .hint { font-size:11px; color:#64748b; margin-top:2px; }
+  .fld .err { font-size:11px; color:#dc2626; margin-top:2px; display:none; }
+  .fld.has-error input, .fld.has-error select, .fld.has-error textarea { border-color:#dc2626; }
+  .fld.has-error .err { display:block; }
+  .fld .warn-label { font-size:11px; color:#dc2626; font-weight:700; margin-top:3px; display:none; }
+  .fld .warn-label.show { display:block; }
+
+  /* Radio group */
+  .radio-g { display:flex; gap:20px; padding-top:4px; flex-wrap:wrap; }
+  .radio-g label { display:flex; align-items:center; gap:6px; font-size:14px; color:#444653; cursor:pointer; }
+  .radio-g input[type=radio] { width:16px; height:16px; accent-color:#444653; padding:0; }
+
+  /* Checkbox group */
+  .chk-g { display:flex; flex-wrap:wrap; gap:8px 16px; }
+  .chk-g label { display:flex; align-items:center; gap:6px; font-size:13px; color:#444653; cursor:pointer; }
+  .chk-g input[type=checkbox] { width:15px; height:15px; accent-color:#444653; padding:0; }
+
+  /* Section title */
+  .sec-title { font-size:13px; font-weight:700; color:#0b1c30; text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid #e2e8f0; padding-bottom:6px; margin-bottom:4px; }
+
+  /* IMT readout */
+  .imt-box { display:flex; align-items:center; gap:8px; padding:8px 12px; background:#eff4ff; border-radius:4px; border:1.5px solid #c4c5d5; }
+  .imt-box strong { font-size:20px; color:#0b1c30; }
+  .imt-tag { font-size:11px; font-weight:700; color:#444653; background:rgba(196,197,213,0.4); border-radius:2px; padding:2px 8px; }
+
+  /* Upload field */
+  .upload-box { border:2px dashed #c4c5d5; border-radius:6px; padding:14px; text-align:center; cursor:pointer; font-size:13px; color:#64748b; transition:border-color 150ms; display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .upload-box:hover { border-color:#444653; }
+  .upload-box input[type=file] { display:none; }
+
+  /* Summary */
+  .sum-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; }
+  .sum-block { border:1px solid #c4c5d5; border-radius:6px; padding:14px; }
+  .sum-block__head { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+  .sum-block__title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:#444653; margin:0; }
+  .sum-block__edit { background:none; border:1px solid #c4c5d5; border-radius:3px; font-size:11px; color:#444653; padding:2px 8px; cursor:pointer; font-family:inherit; }
+  .sum-block__edit:hover { background:#f1f5f9; }
+  .sum-row { display:flex; justify-content:space-between; gap:8px; padding:5px 0; border-bottom:1px dashed #e2e8f0; font-size:12px; }
+  .sum-row:last-child { border-bottom:none; }
+  .sum-row dt { color:#64748b; flex-shrink:0; max-width:48%; }
+  .sum-row dd { margin:0; font-weight:600; color:#0b1c30; text-align:right; word-break:break-word; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <div>
+      <div class="sidebar__brand">
+        <h2 class="sidebar__title">Kader TPK</h2>
+        <p class="sidebar__subtitle">Pemerintah Kota Yogyakarta</p>
+      </div>
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="halaman-beranda.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+          <span>Beranda</span>
+        </a>
+        <a class="sidebar__link" href="halaman-catin.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          <span>Catin</span>
+        </a>
+        <a class="sidebar__link sidebar__link--active" href="halaman-bumil.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+          <span>Ibu Hamil</span>
+        </a>
+        <a class="sidebar__link" href="halaman-bulin.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Z"/></svg>
+          <span>Pasca Salin</span>
+        </a>
+        <a class="sidebar__link" href="halaman-baduta.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+          <span>Baduta</span>
+        </a>
+        <a class="sidebar__link" href="halaman-balita.html">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 7a7 7 0 0 1 14 0H5Z"/></svg>
+          <span>Balita</span>
+        </a>
+      </nav>
+    </div>
+    <div class="sidebar__footer">
+      <a class="sidebar__footer-link" href="#">
+        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+        <span>Pusat Bantuan</span>
+      </a>
+      <a class="sidebar__footer-link sidebar__footer-link--strong" href="halaman-login.html" style="color:#dc2626;">
+        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
+        <span>Keluar</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar__account">
+        <div>
+          <p class="topbar__name">Admin Kader</p>
+          <p class="topbar__role">Petugas TPK Ibu Hamil</p>
+        </div>
+        <div class="topbar__avatar"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NU0xNSA5Ljc1YTMgMyAwIDEgMS02IDAgMyAzIDAgMCAxIDYgMFptNiAyLjI1YTkgOSAwIDEgMS0xOCAwIDkgOSAwIDAgMSAxOCAwWiIvPjwvc3ZnPg==" alt="Foto profil"></div>
+      </div>
+    </header>
+
+    <main class="canvas" id="listView">
+      <section class="stat-row" aria-label="Statistik Ibu Hamil">
+        <article class="stat-card">
+          <p class="stat-card__label">Total Ibu Hamil Terdaftar</p>
+          <p class="stat-card__value" id="totalTerdaftar">842</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-card__label">Total Beresiko</p>
+          <div class="stat-card__value-row">
+            <p class="stat-card__value" id="totalKek">116</p>
+            <p class="stat-card__desc">LiLA &lt; 23,5 cm / HB &lt; 11 g/dL</p>
+          </div>
+        </article>
+        <article class="stat-card">
+          <p class="stat-card__label">Berisiko Stunting Tinggi</p>
+          <div class="stat-card__value-row">
+            <p class="stat-card__value" id="totalBerisiko">54</p>
+            <p class="stat-card__desc">Memerlukan rujukan khusus</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="toolbar" aria-label="Pencarian dan filter">
+        <div class="toolbar__row">
+          <div class="search-field">
+            <input type="text" id="searchInput" placeholder="Cari Nama Ibu Hamil atau NIK...">
+            <img class="search-field__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMjEgMjEtNS4xOTctNS4xOTdtMCAwQTcuNSA3LjUgMCAxIDAgNS4xOTYgNS4xOTZhNy41IDcuNSAwIDAgMCAxMC42MDcgMTAuNjA3WiIvPjwvc3ZnPg==" alt="">
+          </div>
+          <button class="btn btn--outline" type="button" id="filterBtn">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTAuNSA2aDkuNzVNMTAuNSA2YTEuNSAxLjUgMCAxIDEtMyAwbTMgMGExLjUgMS41IDAgMSAwLTMgME0zLjc1IDZINy41bTMgMTJoOS43NW0tOS43NSAwYTEuNSAxLjUgMCAwIDEtMyAwbTMgMGExLjUgMS41IDAgMCAwLTMgMG0tMy43NSAwSDcuNW05LTZoMy43NW0tMy43NSAwYTEuNSAxLjUgMCAwIDEtMyAwbTMgMGExLjUgMS41IDAgMCAwLTMgMG0tOS43NSAwaDkuNzUiLz48L3N2Zz4=" alt=""><span>Filter</span>
+          </button>
+          <button class="btn btn--dark" type="button" id="openWizardBtn">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiNmZmZmZmYiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTEyIDQuNXYxNW03LjUtNy41aC0xNSIvPjwvc3ZnPg==" alt=""><span>+ Data Bumil Baru</span>
+          </button>
+        </div>
+        <div class="filter-grid" id="filterGrid" style="display:none;">
+          <div class="filter-field">
+            <label for="filterKelurahan">Kelurahan</label>
+            <div class="select-wrap">
+              <select id="filterKelurahan"><option value="Semua">Semua Kelurahan</option></select>
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+            </div>
+          </div>
+          <div class="filter-field">
+            <label for="filterRisiko">Status Risiko</label>
+            <div class="select-wrap">
+              <select id="filterRisiko">
+                <option value="Semua">Semua Risiko</option>
+                <option value="Berisiko">Berisiko</option>
+                <option value="Tidak berisiko">Tidak Berisiko</option>
+                <option value="Belum diskrining">Belum Diskrining</option>
+              </select>
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+            </div>
+          </div>
+          <div class="filter-field">
+            <label for="filterUrutan">Urutkan</label>
+            <div class="select-wrap">
+              <select id="filterUrutan">
+                <option value="Terbaru">Terbaru</option>
+                <option value="Nama A-Z">Nama A-Z</option>
+              </select>
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="table-card" aria-label="Tabel data Ibu Hamil">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width:52px;">No.</th>
+              <th>Nama Ibu &amp; Kelurahan</th>
+              <th>NIK</th>
+              <th>Usia Kehamilan &amp; HPL</th>
+              <th>Status Risiko</th>
+              <th style="width:160px;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="bumilTableBody">
+            <tr>
+              <td>1.</td>
+              <td><p class="pair-name">Dewi Sartika</p><p class="pair-kel">Kel. Suryatmajan — Danurejan</p></td>
+              <td class="nik-cell">3319015204980002</td>
+              <td>24 Minggu<br><small style="color:#64748b;">HPL: 15 Des 2026</small></td>
+              <td><span class="badge badge--kek">KEK &amp; Anemia</span></td>
+              <td><div class="row-actions">
+                <a href="halaman-detail-bumil.html" class="btn btn--outline" style="padding:4px 10px;font-size:12px;">Detail</a>
+                <button class="icon-btn" type="button" aria-label="Edit" title="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/></svg></button>
+                <button class="icon-btn delete-btn" type="button" aria-label="Hapus" title="Hapus"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.166L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td><p class="pair-name">Rina Wulandari</p><p class="pair-kel">Kel. Baciro — Gondokusuman</p></td>
+              <td class="nik-cell">3319016108960004</td>
+              <td>14 Minggu<br><small style="color:#64748b;">HPL: 22 Feb 2027</small></td>
+              <td><span class="badge badge--safe">Tidak berisiko</span></td>
+              <td><div class="row-actions">
+                <a href="halaman-detail-bumil.html" class="btn btn--outline" style="padding:4px 10px;font-size:12px;">Detail</a>
+                <button class="icon-btn" type="button" aria-label="Edit" title="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/></svg></button>
+                <button class="icon-btn delete-btn" type="button" aria-label="Hapus" title="Hapus"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.166L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td><p class="pair-name">Siti Mariam</p><p class="pair-kel">Kel. Prenggan — Kotagede</p></td>
+              <td class="nik-cell">3319014102970005</td>
+              <td>32 Minggu<br><small style="color:#64748b;">HPL: 5 Nov 2026</small></td>
+              <td><span class="badge badge--stunting">Berisiko</span></td>
+              <td><div class="row-actions">
+                <a href="halaman-detail-bumil.html" class="btn btn--outline" style="padding:4px 10px;font-size:12px;">Detail</a>
+                <button class="icon-btn" type="button" aria-label="Edit" title="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/></svg></button>
+                <button class="icon-btn delete-btn" type="button" aria-label="Hapus" title="Hapus"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.166L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg></button>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</div>
+
+<!-- ===== WIZARD MODAL ===== -->
+<div class="modal-backdrop" id="wizardModal" role="dialog" aria-modal="true" aria-labelledby="wizardModalTitle">
+  <div class="modal">
+    <div class="modal__header">
+      <div>
+        <h3 class="modal__title" id="wizardModalTitle">Form Pendampingan Ibu Hamil</h3>
+        <p class="modal__subtitle">Lengkapi seluruh tahap skrining — Kota Yogyakarta</p>
+      </div>
+      <button class="icon-btn" type="button" id="closeWizardBtn" aria-label="Tutup">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <nav class="mstepper" aria-label="Tahap pengisian">
+      <div class="mstep is-active" data-mstep="1"><div class="mstep__num">1</div><div class="mstep__lbl">Wilayah</div></div>
+      <div class="mconn" data-mconn="1"></div>
+      <div class="mstep" data-mstep="2"><div class="mstep__num">2</div><div class="mstep__lbl">Identitas</div></div>
+      <div class="mconn" data-mconn="2"></div>
+      <div class="mstep" data-mstep="3"><div class="mstep__num">3</div><div class="mstep__lbl">Riwayat</div></div>
+      <div class="mconn" data-mconn="3"></div>
+      <div class="mstep" data-mstep="4"><div class="mstep__num">4</div><div class="mstep__lbl">Kehamilan</div></div>
+      <div class="mconn" data-mconn="4"></div>
+      <div class="mstep" data-mstep="5"><div class="mstep__num">5</div><div class="mstep__lbl">Sanitasi</div></div>
+      <div class="mconn" data-mconn="5"></div>
+      <div class="mstep" data-mstep="6"><div class="mstep__num">6</div><div class="mstep__lbl">Intervensi</div></div>
+      <div class="mconn" data-mconn="6"></div>
+      <div class="mstep" data-mstep="7"><div class="mstep__num">7</div><div class="mstep__lbl">Ringkasan</div></div>
+    </nav>
+
+    <div class="modal__body">
+
+      <!-- TAHAP 1 -->
+      <div class="mpanel is-active" data-panel="1">
+        <p class="sec-title">Wilayah &amp; Pelaporan</p>
+        <div class="fg">
+          <div class="fld">
+            <label for="bulan_laporan">Bulan Laporan <span class="req">*</span></label>
+            <select id="bulan_laporan" name="bulan_laporan">
+              <option value="">— Pilih Bulan —</option>
+              <option>Januari</option><option>Februari</option><option>Maret</option>
+              <option>April</option><option>Mei</option><option>Juni</option><option>Juli</option>
+            </select>
+            <span class="err">Bulan laporan wajib dipilih.</span>
+          </div>
+          <div class="fld">
+            <label for="tanggal_kunjungan">Tanggal Kunjungan <span class="req">*</span></label>
+            <input type="date" id="tanggal_kunjungan" name="tanggal_kunjungan">
+            <span class="err">Tanggal kunjungan wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="kemantren">Kemantren <span class="req">*</span></label>
+            <select id="kemantren" name="kemantren">
+              <option value="">— Pilih Kemantren —</option>
+              <option value="DANUREJAN">Danurejan</option>
+              <option value="GEDONGTENGEN">Gedongtengen</option>
+              <option value="GONDOKUSUMAN">Gondokusuman</option>
+              <option value="GONDOMANAN">Gondomanan</option>
+              <option value="JETIS">Jetis</option>
+              <option value="KOTAGEDE">Kotagede</option>
+              <option value="KRATON">Kraton</option>
+              <option value="MANTRIJERON">Mantrijeron</option>
+              <option value="MERGANGSAN">Mergangsan</option>
+              <option value="NGAMPILAN">Ngampilan</option>
+              <option value="PAKUALAMAN">Pakualaman</option>
+              <option value="TEGALREJO">Tegalrejo</option>
+              <option value="UMBULHARJO">Umbulharjo</option>
+              <option value="WIROBRAJAN">Wirobrajan</option>
+            </select>
+            <span class="err">Kemantren wajib dipilih.</span>
+          </div>
+          <div class="fld">
+            <label for="kelurahan">Kelurahan <span class="req">*</span></label>
+            <select id="kelurahan" name="kelurahan" disabled>
+              <option value="">— Pilih Kemantren dulu —</option>
+            </select>
+            <span class="err">Kelurahan wajib dipilih.</span>
+          </div>
+          <input type="hidden" id="kemantren_id" name="kemantren_id">
+          <input type="hidden" id="kelurahan_id" name="kelurahan_id">
+          <div class="fld">
+            <label for="nama_tpk">Nama TPK <span class="req">*</span></label>
+            <input type="text" id="nama_tpk" name="nama_tpk" placeholder="Nama kader TPK">
+            <span class="err">Nama TPK wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="unsur_tpk">Unsur TPK <span class="req">*</span></label>
+            <select id="unsur_tpk" name="unsur_tpk">
+              <option value="">— Pilih —</option>
+              <option>Bidan</option>
+              <option>Kader IMP</option>
+              <option>Kader PKK</option>
+            </select>
+            <span class="err">Unsur TPK wajib dipilih.</span>
+          </div>
+          <div class="fld">
+            <label for="kunjungan_ke">Kunjungan Ke-</label>
+            <input type="number" id="kunjungan_ke" name="kunjungan_ke" readonly value="1">
+            <span class="hint">Dihitung otomatis berdasarkan NIK.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAHAP 2 -->
+      <div class="mpanel" data-panel="2">
+        <p class="sec-title">Identitas Ibu Hamil</p>
+        <div class="fg">
+          <div class="fld" style="grid-column:1/-1;">
+            <label for="nama_lengkap">Nama Lengkap <span class="req">*</span></label>
+            <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="Sesuai KTP">
+            <span class="err">Nama lengkap wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="nik">NIK <span class="req">*</span></label>
+            <input type="text" id="nik" name="nik" maxlength="16" inputmode="numeric" placeholder="16 digit NIK">
+            <span class="err">NIK harus tepat 16 digit angka.</span>
+          </div>
+          <div class="fld">
+            <label for="tanggal_lahir">Tanggal Lahir <span class="req">*</span></label>
+            <input type="date" id="tanggal_lahir" name="tanggal_lahir">
+            <span class="hint" id="usiaHint"></span>
+            <span class="err">Tanggal lahir wajib diisi.</span>
+          </div>
+          <div class="fld" style="grid-column:1/-1;">
+            <label for="alamat">Alamat <span class="req">*</span></label>
+            <textarea id="alamat" name="alamat" placeholder="Jl. / Gang / Nomor rumah / Patokan"></textarea>
+            <span class="err">Alamat wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="rt">RT <span class="req">*</span></label>
+            <input type="text" id="rt" name="rt" inputmode="numeric" placeholder="Contoh: 04">
+            <span class="err">RT wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="rw">RW <span class="req">*</span></label>
+            <input type="text" id="rw" name="rw" inputmode="numeric" placeholder="Contoh: 02">
+            <span class="err">RW wajib diisi.</span>
+          </div>
+          <div class="fld" style="grid-column:1/-1;">
+            <label for="nomor_whatsapp_ibu_hamil">Nomor WhatsApp (opsional)</label>
+            <input type="text" id="nomor_whatsapp_ibu_hamil" name="nomor_whatsapp_ibu_hamil" inputmode="numeric" placeholder="08xxxxxxxxxx — angka saja">
+            <span class="err">Nomor WhatsApp hanya boleh berisi angka.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAHAP 3 -->
+      <div class="mpanel" data-panel="3">
+        <p class="sec-title">Riwayat Kehamilan &amp; Penyakit</p>
+        <div class="fg">
+          <div class="fld">
+            <label for="jumlah_anak_dilahirkan">Jumlah Anak Dilahirkan <span class="req">*</span></label>
+            <input type="number" id="jumlah_anak_dilahirkan" name="jumlah_anak_dilahirkan" min="0" step="1" placeholder="0">
+            <span class="err">Jumlah anak wajib diisi (minimal 0).</span>
+          </div>
+          <div class="fld" id="rowUsiaAnak" style="display:none;">
+            <label for="usia_anak_terakhir">Usia Anak Terakhir</label>
+            <input type="text" id="usia_anak_terakhir" name="usia_anak_terakhir" placeholder="Contoh: 3 tahun 2 bulan">
+          </div>
+          <div class="fld" id="rowTglAnak" style="display:none;">
+            <label for="tanggal_lahir_anak_terakhir">Tanggal Lahir Anak Terakhir</label>
+            <input type="date" id="tanggal_lahir_anak_terakhir" name="tanggal_lahir_anak_terakhir">
+          </div>
+        </div>
+        <div class="fg fg--1" style="margin-top:8px;">
+          <div class="fld">
+            <label>Memiliki Riwayat Penyakit (diagnosis dokter)? <span class="req">*</span></label>
+            <div class="radio-g">
+              <label><input type="radio" name="memiliki_riwayat_penyakit" value="Ya" id="riwayatYa"> Ya</label>
+              <label><input type="radio" name="memiliki_riwayat_penyakit" value="Tidak" id="riwayatTidak" checked> Tidak</label>
+            </div>
+          </div>
+        </div>
+        <div class="fg fg--1" id="rowPenyakit" style="display:none;">
+          <div class="fld">
+            <label>Pilih Penyakit (boleh lebih dari satu)</label>
+            <div class="chk-g" id="checkPenyakit">
+              <label><input type="checkbox" name="penyakit" value="Anemia"> Anemia</label>
+              <label><input type="checkbox" name="penyakit" value="KEK"> KEK</label>
+              <label><input type="checkbox" name="penyakit" value="Hipertensi"> Hipertensi</label>
+              <label><input type="checkbox" name="penyakit" value="Diabetes"> Diabetes</label>
+              <label><input type="checkbox" name="penyakit" value="Penyakit jantung"> Penyakit jantung</label>
+              <label><input type="checkbox" name="penyakit" value="Asma"> Asma</label>
+              <label><input type="checkbox" name="penyakit" value="Tiroid"> Tiroid</label>
+              <label><input type="checkbox" name="penyakit" value="Obesitas"> Obesitas</label>
+              <label><input type="checkbox" name="penyakit" value="Preeklamsia"> Preeklamsia</label>
+              <label><input type="checkbox" name="penyakit" value="PCOS"> PCOS</label>
+              <label><input type="checkbox" name="penyakit" value="Miom"> Miom</label>
+              <label><input type="checkbox" name="penyakit" value="Kista endometriosis"> Kista endometriosis</label>
+              <label><input type="checkbox" name="penyakit" value="Epilepsi"> Epilepsi</label>
+              <label><input type="checkbox" name="penyakit" value="Tuberkulosis"> Tuberkulosis</label>
+              <label><input type="checkbox" name="penyakit" value="Hepatitis B"> Hepatitis B</label>
+              <label><input type="checkbox" name="penyakit" value="ISK"> ISK</label>
+              <label><input type="checkbox" name="penyakit" value="Depresi/gangguan mental"> Depresi/gangguan mental</label>
+              <label><input type="checkbox" name="penyakit" value="Pernah keguguran"> Pernah keguguran</label>
+              <label><input type="checkbox" name="penyakit" value="IUFD"> IUFD</label>
+              <label><input type="checkbox" name="penyakit" value="Lainnya" id="chkLainnya"> Lainnya</label>
+            </div>
+            <input type="text" id="lainnya_isian" name="lainnya_isian" placeholder="Sebutkan penyakit lainnya…" style="margin-top:8px;display:none;">
+          </div>
+        </div>
+        <input type="hidden" id="jika_ya_pilih_riwayat_penyakit_berdasar_diagnosis_dokter" name="jika_ya_pilih_riwayat_penyakit_berdasar_diagnosis_dokter">
+      </div>
+
+      <!-- TAHAP 4 -->
+      <div class="mpanel" data-panel="4">
+        <p class="sec-title">Kehamilan &amp; Pemeriksaan</p>
+        <div class="fg">
+          <div class="fld">
+            <label for="usia_kehamilan_saat_ini">Usia Kehamilan (minggu) <span class="req">*</span></label>
+            <input type="number" id="usia_kehamilan_saat_ini" name="usia_kehamilan_saat_ini" min="0" max="42" step="0.1" placeholder="0–42">
+            <span class="err">Usia kehamilan wajib diisi (0–42 minggu).</span>
+          </div>
+          <div class="fld">
+            <label for="tanggal_hari_perkiraan_lahir_hpl">Tanggal HPL <span class="req">*</span></label>
+            <input type="date" id="tanggal_hari_perkiraan_lahir_hpl" name="tanggal_hari_perkiraan_lahir_hpl">
+            <span class="err">Tanggal HPL wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label>Kehamilan Kembar? <span class="req">*</span></label>
+            <div class="radio-g">
+              <label><input type="radio" name="kehamilan_kembar" value="Ya"> Ya</label>
+              <label><input type="radio" name="kehamilan_kembar" value="Tidak" checked> Tidak</label>
+            </div>
+          </div>
+          <div class="fld">
+            <label for="tinggi_badan_ibu">Tinggi Badan (cm) <span class="req">*</span></label>
+            <input type="number" id="tinggi_badan_ibu" name="tinggi_badan_ibu" step="0.1" placeholder="Contoh: 155.0">
+            <span class="err">Tinggi badan wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="berat_badan_ibu">Berat Badan (kg) <span class="req">*</span></label>
+            <input type="number" id="berat_badan_ibu" name="berat_badan_ibu" step="0.1" placeholder="Contoh: 55.0">
+            <span class="err">Berat badan wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="berat_badan_ibu_sebelum_hamil">BB Sebelum Hamil (kg)</label>
+            <input type="number" id="berat_badan_ibu_sebelum_hamil" name="berat_badan_ibu_sebelum_hamil" step="0.1" placeholder="Opsional">
+          </div>
+          <div class="fld" style="grid-column:1/-1;">
+            <label>Indeks Massa Tubuh (IMT) — otomatis</label>
+            <div class="imt-box"><strong id="imtVal">–</strong><span class="imt-tag" id="imtTag">Belum dihitung</span></div>
+          </div>
+          <div class="fld">
+            <label for="tinggi_fundus_uteri_tfu">Tinggi Fundus Uteri / TFU (cm)</label>
+            <input type="number" id="tinggi_fundus_uteri_tfu" name="tinggi_fundus_uteri_tfu" step="0.1" placeholder="Contoh: 28.0">
+          </div>
+          <div class="fld">
+            <label for="taksiran_berat_janin_tbj">Taksiran Berat Janin / TBJ</label>
+            <input type="text" id="taksiran_berat_janin_tbj" name="taksiran_berat_janin_tbj" placeholder="Contoh: 2500 gram">
+          </div>
+          <div class="fld">
+            <label for="kadar_hemoglobin_hb_g_dl">Kadar Hb (g/dL) <span class="req">*</span></label>
+            <input type="number" id="kadar_hemoglobin_hb_g_dl" name="kadar_hemoglobin_hb_g_dl" step="0.1" placeholder="Contoh: 11.5">
+            <span class="warn-label" id="warnHb">&#9888; Hb &lt; 11 g/dL — risiko anemia</span>
+            <span class="err">Kadar Hb wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label for="lingkar_lengan_atas_lila">LiLA (cm) <span class="req">*</span></label>
+            <input type="number" id="lingkar_lengan_atas_lila" name="lingkar_lengan_atas_lila" step="0.1" placeholder="Contoh: 24.0">
+            <span class="warn-label" id="warnLila">&#9888; LiLA &lt; 23,5 cm — risiko KEK</span>
+            <span class="err">LiLA wajib diisi.</span>
+          </div>
+          <div class="fld">
+            <label>Terpapar Asap Rokok? <span class="req">*</span></label>
+            <div class="radio-g">
+              <label><input type="radio" name="terpapar_asap_rokok" value="Ya"> Ya</label>
+              <label><input type="radio" name="terpapar_asap_rokok" value="Tidak" checked> Tidak</label>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Input ElSIMIL? <span class="req">*</span></label>
+            <div class="radio-g">
+              <label><input type="radio" name="input_elsimil" value="Sudah" id="elsimilSudah"> Sudah</label>
+              <label><input type="radio" name="input_elsimil" value="Belum" id="elsimilBelum" checked> Belum</label>
+            </div>
+          </div>
+          <div class="fld">
+            <label for="hasil_skrining_kesehatan_hasil_pengisian_elsimil">Hasil Skrining ElSIMIL</label>
+            <select id="hasil_skrining_kesehatan_hasil_pengisian_elsimil" name="hasil_skrining_kesehatan_hasil_pengisian_elsimil">
+              <option value="">— Belum/Tidak diisi —</option>
+              <option value="Berisiko">Berisiko</option>
+              <option value="Tidak berisiko">Tidak berisiko</option>
+            </select>
+          </div>
+          <div class="fld" id="rowUploadElsimil" style="display:none;">
+            <label>Unggah Screenshot ElSIMIL</label>
+            <label class="upload-box" for="unggah_screenshot_laporan_di_elsimil">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/></svg>
+              <span id="elsimilFileName">Klik untuk pilih gambar</span>
+              <input type="file" id="unggah_screenshot_laporan_di_elsimil" name="unggah_screenshot_laporan_di_elsimil" accept="image/*">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAHAP 5 -->
+      <div class="mpanel" data-panel="5">
+        <p class="sec-title">Lingkungan &amp; Sanitasi</p>
+        <div class="fg fg--1">
+          <div class="fld">
+            <label>Sumber Air Minum Utama <span class="req">*</span></label>
+            <div class="chk-g">
+              <label><input type="checkbox" name="air_minum" value="Air kemasan/isi ulang"> Air kemasan/isi ulang</label>
+              <label><input type="checkbox" name="air_minum" value="Ledeng/PAM"> Ledeng/PAM</label>
+              <label><input type="checkbox" name="air_minum" value="Mata air terlindung"> Mata air terlindung</label>
+              <label><input type="checkbox" name="air_minum" value="Sumur bor/pompa"> Sumur bor/pompa</label>
+              <label><input type="checkbox" name="air_minum" value="Sumur terlindung"> Sumur terlindung</label>
+              <label><input type="checkbox" name="air_minum" value="Sumur tidak terlindung"> Sumur tidak terlindung</label>
+            </div>
+            <span class="err" id="errAirMinum" style="display:none;">Minimal satu sumber air minum wajib dipilih.</span>
+            <input type="hidden" id="sumber_air_minum_utama" name="sumber_air_minum_utama">
+          </div>
+          <div class="fld">
+            <label for="fasilitas_tempat_buang_air_besar_jamban">Fasilitas Jamban <span class="req">*</span></label>
+            <select id="fasilitas_tempat_buang_air_besar_jamban" name="fasilitas_tempat_buang_air_besar_jamban">
+              <option value="">— Pilih Jenis Jamban —</option>
+              <option value="Jamban MCK komunal dengan leher angsa">Jamban MCK komunal dengan leher angsa</option>
+              <option value="Jamban MCK komunal dengan leher angsa tanpa tangki septik/IPAL">Jamban MCK komunal leher angsa tanpa tangki septik/IPAL</option>
+              <option value="Jamban MCK komunal tidak leher angsa dengan tangki septik/IPAL">Jamban MCK komunal tidak leher angsa + tangki septik/IPAL</option>
+              <option value="Jamban milik sendiri dengan leher angsa dan tangki septik/IPAL">Jamban milik sendiri leher angsa + tangki septik/IPAL</option>
+              <option value="Jamban milik sendiri dengan leher angsa tanpa tangki septik/IPAL">Jamban milik sendiri leher angsa tanpa tangki septik/IPAL</option>
+              <option value="Jamban milik sendiri tidak leher angsa dengan tangki septik/IPAL">Jamban milik sendiri tidak leher angsa + tangki septik/IPAL</option>
+            </select>
+            <span class="err">Fasilitas jamban wajib dipilih.</span>
+          </div>
+        </div>
+        <div class="fg">
+          <div class="fld">
+            <label>Unggah Foto Depan Rumah</label>
+            <label class="upload-box" for="unggah_foto_depan_rumah">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/></svg>
+              <span id="fotoRumahName">Klik untuk pilih gambar</span>
+              <input type="file" id="unggah_foto_depan_rumah" name="unggah_foto_depan_rumah" accept="image/*">
+            </label>
+          </div>
+          <div class="fld">
+            <label>Unggah Foto Jamban</label>
+            <label class="upload-box" for="unggah_foto_jamban">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"/></svg>
+              <span id="fotoJambanName">Klik untuk pilih gambar</span>
+              <input type="file" id="unggah_foto_jamban" name="unggah_foto_jamban" accept="image/*">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAHAP 6 -->
+      <div class="mpanel" data-panel="6">
+        <p class="sec-title">Intervensi &amp; Tindak Lanjut</p>
+        <div class="fg">
+          <div class="fld">
+            <label>Memastikan Konsumsi Tablet Tambah Darah? <span class="req">*</span></label>
+            <div class="radio-g">
+              <label><input type="radio" name="memastikan_konsumsi_tablet_tambah_darah" value="Ya"> Ya</label>
+              <label><input type="radio" name="memastikan_konsumsi_tablet_tambah_darah" value="Tidak" checked> Tidak</label>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Mendapatkan PMT? <span class="req">*</span></label>
+            <div class="radio-g">
+              <label><input type="radio" name="mendapatkan_pmt" value="Ya" id="pmtYa"> Ya</label>
+              <label><input type="radio" name="mendapatkan_pmt" value="Tidak" id="pmtTidak" checked> Tidak</label>
+            </div>
+          </div>
+          <div class="fld" id="rowSumberPmt" style="display:none;">
+            <label for="sumber_pmt_bila_sudah_menerima">Sumber PMT</label>
+            <select id="sumber_pmt_bila_sudah_menerima" name="sumber_pmt_bila_sudah_menerima">
+              <option value="">— Pilih —</option>
+              <option>CSR</option>
+              <option>GENTING (Gerakan Orang Tua Asuh Cegah Stunting)</option>
+              <option>PMT Kelurahan/DAIS</option>
+              <option>PMT Puskesmas/BOK</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label>Mendapatkan MBG 3B? <span class="req">*</span></label>
+            <div class="radio-g">
+              <label><input type="radio" name="mendapatkan_mbg_3b" value="Ya"> Ya</label>
+              <label><input type="radio" name="mendapatkan_mbg_3b" value="Tidak" checked> Tidak</label>
+            </div>
+          </div>
+          <div class="fld">
+            <label for="fasilitasi_bantuan_sosial">Fasilitasi Bantuan Sosial <span class="req">*</span></label>
+            <select id="fasilitasi_bantuan_sosial" name="fasilitasi_bantuan_sosial">
+              <option value="">— Pilih —</option>
+              <option value="Ya, sudah">Ya, sudah</option>
+              <option value="Ya, sedang proses">Ya, sedang proses</option>
+              <option value="Tidak, karena sudah mendapat bansos">Tidak, karena sudah mendapat bansos</option>
+              <option value="Tidak, karena tidak memenuhi syarat">Tidak, karena tidak memenuhi syarat</option>
+            </select>
+            <span class="err">Fasilitasi bansos wajib dipilih.</span>
+          </div>
+          <div class="fld">
+            <label for="memberikan_penyuluhan">Memberikan Penyuluhan <span class="req">*</span></label>
+            <select id="memberikan_penyuluhan" name="memberikan_penyuluhan">
+              <option value="">— Pilih —</option>
+              <option value="Ya, perorangan">Ya, perorangan</option>
+              <option value="Ya, kelompok">Ya, kelompok</option>
+              <option value="Ya, perorangan dan kelompok">Ya, perorangan dan kelompok</option>
+            </select>
+            <span class="err">Jenis penyuluhan wajib dipilih.</span>
+          </div>
+          <div class="fld" style="grid-column:1/-1;">
+            <label for="penyuluhan_kie_yang_diberikan">Materi Penyuluhan / KIE yang Diberikan</label>
+            <textarea id="penyuluhan_kie_yang_diberikan" name="penyuluhan_kie_yang_diberikan" placeholder="Tuliskan materi penyuluhan yang diberikan..."></textarea>
+          </div>
+          <div class="fld">
+            <label for="fasilitasi_rujukan_faskes">Fasilitasi Rujukan Faskes <span class="req">*</span></label>
+            <select id="fasilitasi_rujukan_faskes" name="fasilitasi_rujukan_faskes">
+              <option value="">— Pilih —</option>
+              <option value="Tidak">Tidak</option>
+              <option value="Ya, sedang proses">Ya, sedang proses</option>
+              <option value="Ya, sudah mendapat tatalaksana">Ya, sudah mendapat tatalaksana</option>
+            </select>
+            <span class="err">Status rujukan faskes wajib dipilih.</span>
+          </div>
+          <div class="fld" style="grid-column:1/-1;">
+            <label for="kendala_dalam_pendampingan">Kendala dalam Pendampingan</label>
+            <textarea id="kendala_dalam_pendampingan" name="kendala_dalam_pendampingan" placeholder="Kendala yang dihadapi (jika ada)..."></textarea>
+          </div>
+          <div class="fld" style="grid-column:1/-1;">
+            <label for="catatan">Catatan</label>
+            <textarea id="catatan" name="catatan" placeholder="Catatan tambahan..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAHAP 7 -->
+      <div class="mpanel" data-panel="7">
+        <p class="sec-title">Ringkasan — Periksa Sebelum Menyimpan</p>
+        <div class="sum-grid" id="summaryContainer"></div>
+      </div>
+
+    </div><!-- /modal__body -->
+
+    <div class="modal__footer">
+      <button class="btn btn--outline" type="button" id="prevBtn" style="display:none;">&#8592; Kembali</button>
+      <div style="display:flex;gap:10px;margin-left:auto;">
+        <button class="btn btn--outline" type="button" id="cancelWizardBtn">Batal</button>
+        <button class="btn btn--dark" type="button" id="nextBtn">Lanjut &#8594;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <span class="toast__icon">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.75 10.5 18.75 19.5 5.25"/></svg>
+  </span>
+  <span>Data Ibu Hamil berhasil disimpan!</span>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var WILAYAH = {
+    DANUREJAN:    ['Suryatmajan','Tegalpanggung','Bausasran'],
+    GEDONGTENGEN: ['Pringgokusuman','Sosromenduran'],
+    GONDOKUSUMAN: ['Baciro','Demangan','Klitren','Kotabaru','Terban'],
+    GONDOMANAN:   ['Prawirodirjan','Ngupasan'],
+    JETIS:        ['Bumijo','Gowongan','Cokrodiningratan'],
+    KOTAGEDE:     ['Prenggan','Purbayan','Rejowinangun'],
+    KRATON:       ['Patehan','Panembahan','Kadipaten'],
+    MANTRIJERON:  ['Gedongkiwo','Suryodiningratan','Mantrijeron'],
+    MERGANGSAN:   ['Brontokusuman','Keparakan','Wirogunan'],
+    NGAMPILAN:    ['Notoprajan','Ngampilan'],
+    PAKUALAMAN:   ['Purwokinanti','Gunungketur'],
+    TEGALREJO:    ['Kricak','Karangwaru','Tegalrejo','Bener'],
+    UMBULHARJO:   ['Giwangan','Sorosutan','Pandeyan','Warungboto','Tahunan','Muja Muju','Semaki'],
+    WIROBRAJAN:   ['Pakuncen','Wirobrajan','Patangpuluhan']
+  };
+
+  var currentStep = 1;
+  var TOTAL = 7;
+  var modal       = document.getElementById('wizardModal');
+  var openBtn     = document.getElementById('openWizardBtn');
+  var closeBtn    = document.getElementById('closeWizardBtn');
+  var cancelBtn   = document.getElementById('cancelWizardBtn');
+  var prevBtn     = document.getElementById('prevBtn');
+  var nextBtn     = document.getElementById('nextBtn');
+  var filterBtn   = document.getElementById('filterBtn');
+  var filterGrid  = document.getElementById('filterGrid');
+  var toast       = document.getElementById('toast');
+
+  document.getElementById('tanggal_kunjungan').value = todayISO();
+
+  function todayISO() {
+    var d = new Date(); var m = d.getMonth()+1; var day = d.getDate();
+    return d.getFullYear()+'-'+(m<10?'0':'')+m+'-'+(day<10?'0':'')+day;
+  }
+
+  /* Cascade */
+  document.getElementById('kemantren').addEventListener('change', function() {
+    var k = this.value;
+    var s = document.getElementById('kelurahan');
+    document.getElementById('kemantren_id').value = k;
+    s.innerHTML = '<option value="">— Pilih Kelurahan —</option>';
+    if (k && WILAYAH[k]) {
+      WILAYAH[k].forEach(function(kel) {
+        var o = document.createElement('option'); o.value = kel; o.textContent = kel; s.appendChild(o);
+      });
+      s.disabled = false;
+    } else { s.disabled = true; }
+  });
+  document.getElementById('kelurahan').addEventListener('change', function() {
+    document.getElementById('kelurahan_id').value = this.value;
+  });
+
+  /* Usia otomatis */
+  document.getElementById('tanggal_lahir').addEventListener('change', function() {
+    var dob = new Date(this.value); if (isNaN(dob)) { document.getElementById('usiaHint').textContent = ''; return; }
+    var n = new Date();
+    var usia = n.getFullYear() - dob.getFullYear() - (n < new Date(n.getFullYear(), dob.getMonth(), dob.getDate()) ? 1 : 0);
+    document.getElementById('usiaHint').textContent = 'Usia: ' + usia + ' tahun';
+  });
+
+  /* Anak terakhir */
+  document.getElementById('jumlah_anak_dilahirkan').addEventListener('input', function() {
+    var show = !isNaN(parseInt(this.value,10)) && parseInt(this.value,10) > 0;
+    document.getElementById('rowUsiaAnak').style.display = show ? '' : 'none';
+    document.getElementById('rowTglAnak').style.display  = show ? '' : 'none';
+  });
+
+  /* Riwayat penyakit */
+  document.querySelectorAll('[name=memiliki_riwayat_penyakit]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('rowPenyakit').style.display = this.value === 'Ya' ? '' : 'none';
+    });
+  });
+  document.getElementById('chkLainnya').addEventListener('change', function() {
+    document.getElementById('lainnya_isian').style.display = this.checked ? '' : 'none';
+  });
+
+  /* IMT */
+  ['berat_badan_ibu','tinggi_badan_ibu'].forEach(function(id) { document.getElementById(id).addEventListener('input', calcIMT); });
+  function calcIMT() {
+    var bb = parseFloat(document.getElementById('berat_badan_ibu').value);
+    var tb = parseFloat(document.getElementById('tinggi_badan_ibu').value);
+    var iv = document.getElementById('imtVal'), it = document.getElementById('imtTag');
+    if (bb > 0 && tb > 0) {
+      var imt = bb / Math.pow(tb/100, 2); iv.textContent = imt.toFixed(1);
+      it.textContent = imt < 18.5 ? 'Kekurangan BB' : imt < 25 ? 'Normal' : imt < 30 ? 'Kelebihan BB' : 'Obesitas';
+    } else { iv.textContent = '–'; it.textContent = 'Belum dihitung'; }
+  }
+
+  /* Hb & LiLA warnings */
+  document.getElementById('kadar_hemoglobin_hb_g_dl').addEventListener('input', function() {
+    var v = parseFloat(this.value);
+    document.getElementById('warnHb').classList.toggle('show', !isNaN(v) && v < 11);
+  });
+  document.getElementById('lingkar_lengan_atas_lila').addEventListener('input', function() {
+    var v = parseFloat(this.value);
+    document.getElementById('warnLila').classList.toggle('show', !isNaN(v) && v < 23.5);
+  });
+
+  /* ElSIMIL toggle */
+  document.querySelectorAll('[name=input_elsimil]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('rowUploadElsimil').style.display = this.value === 'Sudah' ? '' : 'none';
+    });
+  });
+  document.getElementById('unggah_screenshot_laporan_di_elsimil').addEventListener('change', function() {
+    document.getElementById('elsimilFileName').textContent = this.files.length ? this.files[0].name : 'Klik untuk pilih gambar';
+  });
+
+  /* PMT toggle */
+  document.querySelectorAll('[name=mendapatkan_pmt]').forEach(function(r) {
+    r.addEventListener('change', function() {
+      document.getElementById('rowSumberPmt').style.display = this.value === 'Ya' ? '' : 'none';
+    });
+  });
+
+  /* Upload labels */
+  document.getElementById('unggah_foto_depan_rumah').addEventListener('change', function() {
+    document.getElementById('fotoRumahName').textContent = this.files.length ? this.files[0].name : 'Klik untuk pilih gambar';
+  });
+  document.getElementById('unggah_foto_jamban').addEventListener('change', function() {
+    document.getElementById('fotoJambanName').textContent = this.files.length ? this.files[0].name : 'Klik untuk pilih gambar';
+  });
+
+  /* Filter toggle */
+  filterBtn.addEventListener('click', function() {
+    filterGrid.style.display = filterGrid.style.display === 'none' ? 'grid' : 'none';
+  });
+
+  /* Open/close */
+  openBtn.addEventListener('click', function() { resetForm(); modal.classList.add('is-active'); goToStep(1); });
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+  function closeModal() { modal.classList.remove('is-active'); }
+
+  /* Navigation */
+  prevBtn.addEventListener('click', function() { if (currentStep > 1) goToStep(currentStep - 1); });
+  nextBtn.addEventListener('click', function() {
+    if (currentStep < TOTAL) { if (!validateStep(currentStep)) return; goToStep(currentStep + 1); }
+    else saveData();
+  });
+
+  function goToStep(step) {
+    currentStep = step;
+    document.querySelectorAll('.mstep').forEach(function(el) {
+      var s = parseInt(el.getAttribute('data-mstep'), 10);
+      el.classList.toggle('is-active', s === step);
+      el.classList.toggle('is-done', s < step);
+    });
+    document.querySelectorAll('[data-mconn]').forEach(function(el) {
+      el.classList.toggle('is-done', parseInt(el.getAttribute('data-mconn'), 10) < step);
+    });
+    document.querySelectorAll('.mpanel').forEach(function(el) {
+      el.classList.toggle('is-active', parseInt(el.getAttribute('data-panel'), 10) === step);
+    });
+    prevBtn.style.display = step === 1 ? 'none' : 'inline-flex';
+    nextBtn.textContent = step === TOTAL ? 'Simpan Data' : 'Lanjut \u2192';
+    if (step === TOTAL) buildSummary();
+    document.querySelector('.modal__body').scrollTop = 0;
+  }
+
+  /* Validation */
+  function validateStep(step) {
+    var ok = true; clearErrors();
+    if (step === 1) {
+      ok = req('bulan_laporan') & req('tanggal_kunjungan') & req('kemantren') & reqSel('kelurahan','Kelurahan wajib dipilih.') & req('nama_tpk') & reqSel('unsur_tpk','Unsur TPK wajib dipilih.');
+    } else if (step === 2) {
+      ok = req('nama_lengkap') & validateNIK() & req('tanggal_lahir') & req('alamat') & req('rt') & req('rw') & validateWA();
+    } else if (step === 3) {
+      ok = reqNum('jumlah_anak_dilahirkan');
+    } else if (step === 4) {
+      ok = reqNum('usia_kehamilan_saat_ini') & req('tanggal_hari_perkiraan_lahir_hpl') & req('tinggi_badan_ibu') & req('berat_badan_ibu') & req('kadar_hemoglobin_hb_g_dl') & req('lingkar_lengan_atas_lila');
+    } else if (step === 5) {
+      var airChks = document.querySelectorAll('[name=air_minum]:checked');
+      if (!airChks.length) { document.getElementById('errAirMinum').style.display = 'block'; ok = false; }
+      ok = reqSel('fasilitas_tempat_buang_air_besar_jamban','Fasilitas jamban wajib dipilih.') & ok;
+    } else if (step === 6) {
+      ok = reqSel('fasilitasi_bantuan_sosial','Fasilitasi bansos wajib dipilih.') & reqSel('memberikan_penyuluhan','Jenis penyuluhan wajib dipilih.') & reqSel('fasilitasi_rujukan_faskes','Status rujukan faskes wajib dipilih.');
+    }
+    return !!ok;
+  }
+
+  function clearErrors() {
+    document.querySelectorAll('.fld.has-error').forEach(function(el) { el.classList.remove('has-error'); });
+    document.getElementById('errAirMinum').style.display = 'none';
+  }
+  function markErr(id, msg) {
+    var el = document.getElementById(id); if (!el) return false;
+    var w = el.closest('.fld');
+    if (w) { w.classList.add('has-error'); var e = w.querySelector('.err'); if (e && msg) e.textContent = msg; }
+    return false;
+  }
+  function req(id) { var el = document.getElementById(id); if (!el || !el.value.trim()) return markErr(id); return true; }
+  function reqSel(id, msg) { var el = document.getElementById(id); if (!el || !el.value) return markErr(id, msg); return true; }
+  function reqNum(id) { var el = document.getElementById(id); if (!el || el.value === '' || isNaN(Number(el.value))) return markErr(id); return true; }
+  function validateNIK() { var v = document.getElementById('nik').value.trim(); if (!/^\d{16}$/.test(v)) return markErr('nik','NIK harus tepat 16 digit angka.'); return true; }
+  function validateWA() { var v = document.getElementById('nomor_whatsapp_ibu_hamil').value.trim(); if (v && !/^\d+$/.test(v)) return markErr('nomor_whatsapp_ibu_hamil','Nomor WhatsApp hanya boleh berisi angka.'); return true; }
+
+  /* Build summary */
+  function buildSummary() {
+    var penyakitList = [];
+    document.querySelectorAll('[name=penyakit]:checked').forEach(function(c) { penyakitList.push(c.value); });
+    var lainnya = document.getElementById('lainnya_isian').value.trim();
+    if (lainnya && document.getElementById('chkLainnya').checked) penyakitList.push('Lainnya: '+lainnya);
+    document.getElementById('jika_ya_pilih_riwayat_penyakit_berdasar_diagnosis_dokter').value = penyakitList.join(', ');
+
+    var airList = [];
+    document.querySelectorAll('[name=air_minum]:checked').forEach(function(c) { airList.push(c.value); });
+    document.getElementById('sumber_air_minum_utama').value = airList.join(', ');
+
+    var g = function(id) { var e = document.getElementById(id); return e && e.value.trim() ? e.value.trim() : '\u2014'; };
+    var radio = function(name) { var c = document.querySelector('[name='+name+']:checked'); return c ? c.value : '\u2014'; };
+
+    var blocks = [
+      { title:'1. Wilayah &amp; Pelaporan', step:1, rows:[
+        ['Bulan Laporan',g('bulan_laporan')],['Tanggal Kunjungan',g('tanggal_kunjungan')],
+        ['Kemantren',g('kemantren')],['Kelurahan',g('kelurahan')],
+        ['Nama TPK',g('nama_tpk')],['Unsur TPK',g('unsur_tpk')],['Kunjungan Ke-',g('kunjungan_ke')]
+      ]},
+      { title:'2. Identitas Ibu', step:2, rows:[
+        ['Nama Lengkap',g('nama_lengkap')],['NIK',g('nik')],
+        ['Tgl Lahir',g('tanggal_lahir')],['Alamat',g('alamat')],
+        ['RT/RW',g('rt')+'/'+g('rw')],['WhatsApp',g('nomor_whatsapp_ibu_hamil')]
+      ]},
+      { title:'3. Riwayat Kehamilan', step:3, rows:[
+        ['Jml Anak',g('jumlah_anak_dilahirkan')],['Usia Anak Terakhir',g('usia_anak_terakhir')],
+        ['Riwayat Penyakit',radio('memiliki_riwayat_penyakit')],
+        ['Diagnosis',document.getElementById('jika_ya_pilih_riwayat_penyakit_berdasar_diagnosis_dokter').value||'\u2014']
+      ]},
+      { title:'4. Kehamilan &amp; Pemeriksaan', step:4, rows:[
+        ['Usia Kehamilan',g('usia_kehamilan_saat_ini')+' minggu'],['HPL',g('tanggal_hari_perkiraan_lahir_hpl')],
+        ['Kembar',radio('kehamilan_kembar')],['Tinggi',g('tinggi_badan_ibu')+' cm'],
+        ['BB',g('berat_badan_ibu')+' kg'],['IMT',document.getElementById('imtVal').textContent],
+        ['TFU',g('tinggi_fundus_uteri_tfu')+' cm'],['TBJ',g('taksiran_berat_janin_tbj')],
+        ['Hb',g('kadar_hemoglobin_hb_g_dl')+' g/dL'],['LiLA',g('lingkar_lengan_atas_lila')+' cm'],
+        ['Terpapar Rokok',radio('terpapar_asap_rokok')],['ElSIMIL',radio('input_elsimil')],
+        ['Hasil Skrining',g('hasil_skrining_kesehatan_hasil_pengisian_elsimil')]
+      ]},
+      { title:'5. Lingkungan &amp; Sanitasi', step:5, rows:[
+        ['Sumber Air Minum',document.getElementById('sumber_air_minum_utama').value||'\u2014'],
+        ['Fasilitas Jamban',g('fasilitas_tempat_buang_air_besar_jamban')]
+      ]},
+      { title:'6. Intervensi &amp; Tindak Lanjut', step:6, rows:[
+        ['TTD',radio('memastikan_konsumsi_tablet_tambah_darah')],
+        ['PMT',radio('mendapatkan_pmt')],['Sumber PMT',g('sumber_pmt_bila_sudah_menerima')],
+        ['MBG 3B',radio('mendapatkan_mbg_3b')],['Bansos',g('fasilitasi_bantuan_sosial')],
+        ['Penyuluhan',g('memberikan_penyuluhan')],['Materi KIE',g('penyuluhan_kie_yang_diberikan')],
+        ['Rujukan Faskes',g('fasilitasi_rujukan_faskes')],
+        ['Kendala',g('kendala_dalam_pendampingan')],['Catatan',g('catatan')]
+      ]}
+    ];
+
+    var html = '';
+    blocks.forEach(function(b) {
+      html += '<div class="sum-block"><div class="sum-block__head"><p class="sum-block__title">'+b.title+'</p>';
+      html += '<button type="button" class="sum-block__edit" data-goto="'+b.step+'">Ubah</button></div><dl>';
+      b.rows.forEach(function(r) {
+        html += '<div class="sum-row"><dt>'+r[0]+'</dt><dd>'+escHtml(r[1])+'</dd></div>';
+      });
+      html += '</dl></div>';
+    });
+    document.getElementById('summaryContainer').innerHTML = html;
+    document.querySelectorAll('.sum-block__edit').forEach(function(btn) {
+      btn.addEventListener('click', function() { goToStep(parseInt(this.getAttribute('data-goto'), 10)); });
+    });
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* Save data */
+  function saveData() {
+    var nama  = document.getElementById('nama_lengkap').value.trim() || 'Ibu Hamil Baru';
+    var nik   = document.getElementById('nik').value.trim() || '0000000000000000';
+    var kel   = document.getElementById('kelurahan').value || '\u2014';
+    var kem   = document.getElementById('kemantren').value || '\u2014';
+    var usia  = document.getElementById('usia_kehamilan_saat_ini').value || '\u2014';
+    var hpl   = document.getElementById('tanggal_hari_perkiraan_lahir_hpl').value || '';
+    var hasil = document.getElementById('hasil_skrining_kesehatan_hasil_pengisian_elsimil').value;
+    var hb    = parseFloat(document.getElementById('kadar_hemoglobin_hb_g_dl').value) || 0;
+    var lila  = parseFloat(document.getElementById('lingkar_lengan_atas_lila').value) || 0;
+
+    var badgeHtml;
+    if (!hasil) { badgeHtml = '<span class="badge badge--belum">Belum diskrining</span>'; }
+    else if (hasil === 'Berisiko') { badgeHtml = '<span class="badge badge--stunting">Berisiko</span>'; }
+    else { badgeHtml = '<span class="badge badge--safe">Tidak berisiko</span>'; }
+    if ((lila > 0 && lila < 23.5) || (hb > 0 && hb < 11)) {
+      badgeHtml = '<span class="badge badge--kek">KEK &amp; Anemia</span>';
+    }
+
+    var tbody = document.getElementById('bumilTableBody');
+    var count = tbody.querySelectorAll('tr').length + 1;
+    var tr = document.createElement('tr');
+    tr.classList.add('is-new');
+    tr.innerHTML =
+      '<td>'+count+'.</td>'+
+      '<td><p class="pair-name">'+escHtml(nama)+'</p><p class="pair-kel">Kel. '+escHtml(kel)+' \u2014 '+escHtml(kem)+'</p></td>'+
+      '<td class="nik-cell">'+escHtml(nik)+'</td>'+
+      '<td>'+escHtml(usia)+' Minggu<br><small style="color:#64748b;">'+(hpl ? 'HPL: '+escHtml(hpl) : '')+'</small></td>'+
+      '<td>'+badgeHtml+'</td>'+
+      '<td><div class="row-actions">'+
+        '<a href="halaman-detail-bumil.html" class="btn btn--outline" style="padding:4px 10px;font-size:12px;">Detail</a>'+
+        '<button class="icon-btn" type="button" aria-label="Edit" title="Edit"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/></svg></button>'+
+        '<button class="icon-btn delete-btn" type="button" aria-label="Hapus" title="Hapus"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444653" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.166L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg></button>'+
+      '</div></td>';
+    tbody.prepend(tr);
+    var tot = document.getElementById('totalTerdaftar');
+    tot.textContent = (parseInt(tot.textContent, 10) + 1).toString();
+    closeModal();
+    toast.classList.add('is-visible');
+    setTimeout(function() { toast.classList.remove('is-visible'); }, 3200);
+  }
+
+  /* Reset form */
+  function resetForm() {
+    ['bulan_laporan','kemantren','unsur_tpk','nama_tpk','nama_lengkap','nik',
+     'tanggal_lahir','alamat','rt','rw','nomor_whatsapp_ibu_hamil',
+     'jumlah_anak_dilahirkan','usia_anak_terakhir','tanggal_lahir_anak_terakhir',
+     'usia_kehamilan_saat_ini','tanggal_hari_perkiraan_lahir_hpl',
+     'tinggi_badan_ibu','berat_badan_ibu','berat_badan_ibu_sebelum_hamil',
+     'tinggi_fundus_uteri_tfu','taksiran_berat_janin_tbj',
+     'kadar_hemoglobin_hb_g_dl','lingkar_lengan_atas_lila',
+     'hasil_skrining_kesehatan_hasil_pengisian_elsimil',
+     'sumber_pmt_bila_sudah_menerima','fasilitasi_bantuan_sosial',
+     'memberikan_penyuluhan','fasilitasi_rujukan_faskes',
+     'penyuluhan_kie_yang_diberikan','kendala_dalam_pendampingan','catatan'
+    ].forEach(function(id) { var e = document.getElementById(id); if (e) e.value = ''; });
+    document.getElementById('tanggal_kunjungan').value = todayISO();
+    document.getElementById('kunjungan_ke').value = 1;
+    var ks = document.getElementById('kelurahan');
+    ks.disabled = true; ks.innerHTML = '<option value="">— Pilih Kemantren dulu —</option>';
+    document.getElementById('imtVal').textContent = '\u2013'; document.getElementById('imtTag').textContent = 'Belum dihitung';
+    document.getElementById('usiaHint').textContent = '';
+    document.querySelectorAll('[name=penyakit],[name=air_minum]').forEach(function(c) { c.checked = false; });
+    document.getElementById('riwayatTidak').checked = true;
+    document.getElementById('elsimilBelum').checked = true;
+    document.getElementById('pmtTidak').checked = true;
+    ['kehamilan_kembar','terpapar_asap_rokok','memastikan_konsumsi_tablet_tambah_darah','mendapatkan_mbg_3b'].forEach(function(n) {
+      var t = document.querySelector('[name='+n+'][value=Tidak]'); if (t) t.checked = true;
+    });
+    ['rowPenyakit','rowUsiaAnak','rowTglAnak','rowUploadElsimil','rowSumberPmt'].forEach(function(id) {
+      document.getElementById(id).style.display = 'none';
+    });
+    document.getElementById('lainnya_isian').style.display = 'none';
+    document.getElementById('warnHb').classList.remove('show');
+    document.getElementById('warnLila').classList.remove('show');
+    ['elsimilFileName','fotoRumahName','fotoJambanName'].forEach(function(id) {
+      document.getElementById(id).textContent = 'Klik untuk pilih gambar';
+    });
+    clearErrors();
+  }
+
+  /* Delete row */
+  document.getElementById('bumilTableBody').addEventListener('click', function(e) {
+    var btn = e.target.closest('.delete-btn'); if (!btn) return;
+    if (confirm('Yakin ingin menghapus data ini?')) {
+      var tr = btn.closest('tr');
+      tr.style.transition = 'opacity 300ms'; tr.style.opacity = '0';
+      setTimeout(function() {
+        tr.remove(); renumber();
+        var tot = document.getElementById('totalTerdaftar');
+        var n = parseInt(tot.textContent, 10); if (n > 0) tot.textContent = (n-1).toString();
+      }, 300);
+    }
+  });
+  function renumber() {
+    document.querySelectorAll('#bumilTableBody tr').forEach(function(tr, i) { tr.cells[0].textContent = (i+1)+'.'; });
+  }
+
+  /* Live search */
+  document.getElementById('searchInput').addEventListener('keyup', filterTable);
+  document.getElementById('filterKelurahan').addEventListener('change', filterTable);
+  document.getElementById('filterRisiko').addEventListener('change', filterTable);
+  function filterTable() {
+    var q = document.getElementById('searchInput').value.toLowerCase();
+    var kel = document.getElementById('filterKelurahan').value;
+    var rsk = document.getElementById('filterRisiko').value;
+    document.querySelectorAll('#bumilTableBody tr').forEach(function(row) {
+      var t = row.textContent.toLowerCase();
+      var mq = !q || t.indexOf(q) !== -1;
+      var mk = kel === 'Semua' || t.indexOf(kel.toLowerCase()) !== -1;
+      var mr = rsk === 'Semua' || t.indexOf(rsk.toLowerCase()) !== -1;
+      row.style.display = (mq && mk && mr) ? '' : 'none';
+    });
+  }
+
+})();
+</script>
+</body>
+</html>

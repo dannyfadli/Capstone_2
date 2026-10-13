@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halaman Data Balita (24-59 Bulan) — Kader TPK</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app">
+        <aside class="sidebar" aria-label="Navigasi utama">
+      <div>
+        <div class="sidebar__brand">
+          <h2 class="sidebar__title">Kader TPK</h2>
+          <p class="sidebar__subtitle">Pemerintah Kota Yogyakarta</p>
+        </div>
+        <nav class="sidebar__nav">
+          <a class="sidebar__link" href="halaman-beranda.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+            <span>Beranda</span>
+          </a>
+          <a class="sidebar__link" href="halaman-catin.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+            <span>Catin</span>
+          </a>
+          <a class="sidebar__link" href="halaman-bumil.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+            <span>Ibu Hamil</span>
+          </a>
+          <a class="sidebar__link" href="halaman-bulin.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Z"/></svg>
+            <span>Pasca Salin</span>
+          </a>
+          <a class="sidebar__link" href="halaman-baduta.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+            <span>Baduta</span>
+          </a>
+          <a class="sidebar__link sidebar__link--active" href="halaman-balita.html">
+            <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-7 7a7 7 0 0 1 14 0H5Z"/></svg>
+            <span>Balita</span>
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar__footer">
+        <a class="sidebar__footer-link" href="#">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+          <span>Pusat Bantuan</span>
+        </a>
+        <a class="sidebar__footer-link sidebar__footer-link--strong" href="halaman-login.html" style="color:#dc2626;">
+          <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6A2.25 2.25 0 0 0 5.25 5.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"/></svg>
+          <span>Keluar</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar__account">
+          <div>
+            <p class="topbar__name">Admin Kader</p>
+            <p class="topbar__role">Petugas TPK Balita (24-59 Bulan)</p>
+          </div>
+          <div class="topbar__avatar"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzY0NzQ4YiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTcuOTgyIDE4LjcyNUE3LjQ4OCA3LjQ4OCAwIDAgMCAxMiAxNS43NWE3LjQ4OCA3LjQ4OCAwIDAgMC01Ljk4MiAyLjk3NU0xNSA5Ljc1YTMgMyAw IDEgMS02IDAgMyAzIDAgMCAxIDYgMFptNiAyLjI1YTkgOSAw IDEgMS0xOCAwIDkgOSAwIDAgMSAxOCAwWiIvPjwvc3ZnPg==" alt="Foto profil"></div>
+        </div>
+      </header>
+
+      <main class="canvas" id="listView">
+        <section class="stat-row" aria-label="Statistik Balita">
+          <article class="stat-card">
+            <p class="stat-card__label">Total Balita Terdaftar (2-5 Thn)</p>
+            <p class="stat-card__value" id="totalTerdaftar">2.140</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-card__label">Total Beresiko</p>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value" id="totalStunting">108</p>
+              <p class="stat-card__desc">Menerima Paket PMT Pemulihan</p>
+            </div>
+          </article>
+          <article class="stat-card">
+            <p class="stat-card__label">Cakupan Vit A &amp; SDIDTK</p>
+            <div class="stat-card__value-row">
+              <p class="stat-card__value">94.2%</p>
+              <p class="stat-card__desc">Rutin Pemantauan Tumbang</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="toolbar" aria-label="Pencarian dan filter">
+          <div class="toolbar__row">
+            <div class="search-field">
+              <input type="text" id="searchInput" placeholder="Cari Nama Balita, Orang Tua, atau NIK...">
+              <img class="search-field__icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzZiNzI4MCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMjEgMjEtNS4xOTctNS4xOTdtMCAwQTcuNSA3LjUgMCAxIDAgNS4xOTYgNS4xOTZhNy41IDcuNSAwIDAgMCAxMC42MDcgMTAuNjA3WiIvPjwvc3ZnPg==" alt="">
+            </div>
+            <button class="btn btn--outline" type="button" id="filterBtn">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzBiMWMzMCI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTAuNSA2aDkuNzVNMTAuNSA2YTEuNSAxLjUgMCAxIDEtMyAwbTMgMGExLjUgMS41IDAgMSAwLTMgME0zLjc1IDZINy41bTMgMTJoOS43NW0tOS43NSAwYTEuNSAxLjUgMCAwIDEtMyAwbTMgMGExLjUgMS41IDAgMCAwLTMgMG0tMy43NSAwSDcuNW05LTZoMy43NW0tMy43NSAwYTEuNSAxLjUgMCAwIDEtMyAwbTMgMGExLjUgMS41IDAgMCAwLTMgMG0tOS43NSAwaDkuNzUiLz48L3N2Zz4=" alt=""><span>Filter</span>
+            </button>
+            <button class="btn btn--dark" type="button" id="openWizardBtn">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiNmZmZmZmYiPjxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTEyIDQuNXYxNW03LjUtNy41aC0xNSIvPjwvc3ZnPg==" alt=""><span>+ Data Balita Baru</span>
+            </button>
+          </div>
+
+          <div class="filter-grid">
+            <div class="filter-field">
+              <label for="filterKelurahan">Kelurahan</label>
+              <div class="select-wrap">
+                <select id="filterKelurahan">
+                  <option value="Semua">Semua Kelurahan</option>
+                  <option value="Kel. Kajeksan">Kel. Kajeksan</option>
+                  <option value="Kel. Glantengan">Kel. Glantengan</option>
+                  <option value="Kel. Panjunan">Kel. Panjunan</option>
+                </select>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+              </div>
+            </div>
+            <div class="filter-field">
+              <label for="filterStatusGizi">Status Gizi &amp; Stunting</label>
+              <div class="select-wrap">
+                <select id="filterStatusGizi">
+                  <option value="Semua">Semua Status</option>
+                  <option value="Stunting">Stunting</option>
+                  <option value="Gizi Kurang">Gizi Kurang</option>
+                  <option value="Normal">Gizi Baik / Normal</option>
+                </select>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+              </div>
+            </div>
+            <div class="filter-field">
+              <label for="filterUrutan">Urutkan</label>
+              <div class="select-wrap">
+                <select id="filterUrutan">
+                  <option value="Terbaru">Terbaru</option>
+                  <option value="Terlama">Terlama</option>
+                  <option value="Nama A-Z">Nama A-Z</option>
+                </select>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTkuNSA4LjI1LTcuNSA3LjUtNy41LTcuNSIvPjwvc3ZnPg==" alt="">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="table-card" aria-label="Tabel data Balita">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:60px;">No.</th>
+                <th>Balita &amp; Orang Tua</th>
+                <th>Identitas NIK</th>
+                <th>Pengukuran Antropometri</th>
+                <th>Vit A &amp; PMT</th>
+                <th>Status Gizi &amp; Stunting</th>
+                <th style="width:140px;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="balitaTableBody">
+              <tr>
+                <td>1.</td>
+                <td><p class="pair-name">Bagus Pratama (L)</p><p class="pair-kel">Usia: 36 Bln (3 Thn) • Ibu: Maya Indah • Kel. Kajeksan</p></td>
+                <td class="nik-cell">3319011208230005</td>
+                <td>BB: 11.2 kg <br><small style="color:#4b5563;">TB: 87.0 cm | LiLA: 13.5 cm</small></td>
+                <td>Vit A: Kapsul Merah <br><small style="color:#d97706;font-weight:600;">PMT: Pemulihan Aktif</small></td>
+                <td><span class="badge badge--stunting"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMTIgOXYzLjc1bS05LjMwMyAzLjM3NmMtLjg2NiAxLjUuMjE3IDMuMzc4IDEuOTQ4IDMuMzc4aDE4LjcxYzEuNzMgMCAyLjgxMy0xLjg3NCAxLjk4OC0zLjM3NEwxMy45NDkgMy4zNzhjLS44NjYtMS41LTMuMDMyLTEuNS0zLjg5OCAwTDIuNjk3IDE2LjEyNlpNMTIgMTUuNzVoLjAwN3YuMDA4SDEydi0uMDA4WiIvPjwvc3ZnPg==" alt="">Stunting &amp; Gizi Kurang</span></td>
+                <td>
+                  <div class="row-actions">
+                    <a href="halaman-detail-balita.html" class="btn btn--outline" style="padding:4px 10px;font-size:12px;">Detail</a>
+                    <button class="icon-btn delete-btn" type="button" aria-label="Hapus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMjzg4IDkuNDg4bS00LjkwNCAwTDEwLjI2IDltOS45NjgtMy4yMWMuMzQyLjA1Mi42ODIuMTA3IDEuMDIyLjE2Nm0tMS4wMjItLjE2NkwxODEuODUgMTkuNjc1QTIuMjUgMi4yNSAwIDAgMSAxOS42MDcgMjFIMC4zOTNhMi4yNSAyLjI1IDAgMCAxLTIuMjQyLTEuMzI1TDUuMjUgNS43OW0xMy41IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC0zLjQ3OC0uMzk3bS0xMiAuMzk3QTQ4LjA3NSA0OC4wNzUgMCAw IDEgNi45MzggNC42MTVtMTIgMEExOC42OTggMTguNjk4IDAgMCAw IDE1Ljc1IDQuNTVNMTUuNzUgNC41NVY0LjI1QTIuMjUgMi4yNSAwIDAgMCAxMy41IDJoLTNhMi4yNSAyLjI1IDAgMCAwLTIuMjUgMi4yNVY4LjU1bTcgMGgtNzAiLz48L3N2Zz4=" alt=""></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td><p class="pair-name">Cantika Putri (P)</p><p class="pair-kel">Usia: 48 Bln (4 Thn) • Ibu: Fitriana • Kel. Glantengan</p></td>
+                <td class="nik-cell">3319016405220002</td>
+                <td>BB: 15.5 kg <br><small style="color:#4b5563;">TB: 102.0 cm | LiLA: 15.2 cm</small></td>
+                <td>Vit A: Kapsul Merah <br><small style="color:#16a34a;font-weight:600;">PMT: Lulus</small></td>
+                <td><span class="badge badge--safe"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOSAxMi43NWw2IDZsOS05TTEyIDIxYTkgOSAw IDEgMSAwLTE4IDkgOSAwIDAgMSAwIDEgOaWiIvPjwvc3ZnPg==" alt="">Normal / Gizi Baik</span></td>
+                <td>
+                  <div class="row-actions">
+                    <a href="halaman-detail-balita.html" class="btn btn--outline" style="padding:4px 10px;font-size:12px;">Detail</a>
+                    <button class="icon-btn delete-btn" type="button" aria-label="Hapus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMjzg4IDkuNDg4bS00LjkwNCAwTDEwLjI2IDltOS45NjgtMy4yMWMuMzQyLjA1Mi42ODIuMTA3IDEuMDIyLjE2Nm0tMS4wMjItLjE2NkwxODEuODUgMTkuNjc1QTIuMjUgMi4yNSAwIDAgMSAxOS42MDcgMjFIMC4zOTNhMi4yNSAyLjI1IDAgMCAxLTIuMjQyLTEuMzI1TDUuMjUgNS43OW0xMy41IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC0zLjQ3OC0uMzk3bS0xMiAuMzk3QTQ4LjA3NSA4OC4wNzUgMCAw IDEgNi45MzggNC42MTVtMTIgMEExOC42OTggMTguNjk4IDAgMCAw IDE1Ljc1IDQuNTVNMTUuNzUgNC41NVY0LjI1QTIuMjUgMi4yNSAwIDAgMCAxMy41IDJoLTNhMi4yNSAyLjI1IDAgMCAwLTIuMjUgMi4yNVY4LjU1bTcgMGgtNzAiLz48L3N2Zz4=" alt=""></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Wizard Modal Balita -->
+  <div class="modal-backdrop" id="wizardModal" role="dialog" aria-modal="true">
+    <div class="modal modal--wide">
+      <div class="modal__header">
+        <div>
+          <h3 class="modal__title">Form Pemantauan Balita (24-59 Bulan)</h3>
+          <p class="modal__subtitle">Skrining pertumbuhan, perkembangan &amp; gizi balita sasaran TPK</p>
+        </div>
+        <button class="icon-btn" type="button" id="closeWizardBtn" aria-label="Tutup"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNNiAxOGwxMi0xMk02IDZsMTIgMTIiLz48L3N2Zz4=" alt=""></button>
+      </div>
+
+      <nav class="wizard-steps" aria-label="Tahap pengisian form">
+        <div class="wizard-step is-active" data-step="1"><span class="wizard-step__num">1</span><span class="wizard-step__label">Wilayah</span></div>
+        <div class="wizard-step" data-step="2"><span class="wizard-step__num">2</span><span class="wizard-step__label">Identitas</span></div>
+        <div class="wizard-step" data-step="3"><span class="wizard-step__num">3</span><span class="wizard-step__label">Antropometri</span></div>
+        <div class="wizard-step" data-step="4"><span class="wizard-step__num">4</span><span class="wizard-step__label">Perkembangan</span></div>
+        <div class="wizard-step" data-step="5"><span class="wizard-step__num">5</span><span class="wizard-step__label">Ringkasan</span></div>
+      </nav>
+
+      <div class="modal__body">
+        <!-- Step 1 -->
+        <div class="wizard-panel is-active" data-panel="1">
+          <div class="form-grid">
+            <div class="form-group"><label for="kemantren">Kemantren</label><input type="text" id="kemantren" value="Kecamatan Kudus Kota"></div>
+            <div class="form-group"><label for="kelurahan">Kelurahan</label><input type="text" id="kelurahan" value="Kel. Kajeksan"></div>
+            <div class="form-group"><label for="posyandu">Nama Posyandu</label><input type="text" id="posyandu" value="Posyandu Melati II"></div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="wizard-panel" data-panel="2">
+          <div class="form-grid">
+            <div class="form-group"><label for="namaBalita">Nama Lengkap Balita</label><input type="text" id="namaBalita" placeholder="Contoh: Bagus Pratama"></div>
+            <div class="form-group"><label for="nikBalita">NIK Balita</label><input type="text" id="nikBalita" placeholder="16 digit NIK"></div>
+            <div class="form-group"><label for="tglLahirBalita">Tanggal Lahir Balita</label><input type="date" id="tglLahirBalita"></div>
+            <div class="form-group"><label for="jkl">Jenis Kelamin</label><select id="jkl"><option value="Laki-laki">Laki-laki</option><option value="Perempuan">Perempuan</option></select></div>
+            <div class="form-group"><label for="namaIbu">Nama Ibu / Orang Tua</label><input type="text" id="namaIbu" placeholder="Contoh: Maya Indah"></div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="wizard-panel" data-panel="3">
+          <div class="form-grid">
+            <div class="form-group"><label for="usiaBulan">Usia Saat Ini (Bulan)</label><input type="number" id="usiaBulan" placeholder="Contoh: 36"></div>
+            <div class="form-group"><label for="bb">Berat Badan (kg)</label><input type="number" step="0.1" id="bb" placeholder="Contoh: 11.2"></div>
+            <div class="form-group"><label for="tb">Tinggi Badan (cm)</label><input type="number" step="0.1" id="tb" placeholder="Contoh: 87.0"></div>
+            <div class="form-group"><label for="lila">Lingkar Lengan (LiLA cm)</label><input type="number" step="0.1" id="lila" placeholder="Contoh: 13.5"></div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="wizard-panel" data-panel="4">
+          <div class="form-grid">
+            <div class="form-group"><label for="vitA">Pemberian Kapsul Vitamin A Merah</label><select id="vitA"><option value="Sudah">Sudah Diberikan</option><option value="Belum">Belum Diberikan</option></select></div>
+            <div class="form-group"><label for="pmt">Status Pemberian PMT Pemulihan</label><select id="pmt"><option value="Pemulihan Aktif">Penerima PMT Pemulihan</option><option value="Tidak Perlu">Tidak Perlu PMT (Normal)</option></select></div>
+            <div class="form-group"><label for="kpsp">Hasil KPSP / SDIDTK</label><select id="kpsp"><option value="Sesuai">Sesuai Usia</option><option value="Meragukan">Meragukan</option><option value="Penyimpangan">Penyimpangan</option></select></div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="wizard-panel" data-panel="5">
+          <div class="summary-grid" id="summaryGrid"></div>
+        </div>
+      </div>
+
+      <div class="modal__footer">
+        <button class="btn btn--outline" type="button" id="prevBtn" style="display:none;">Kembali</button>
+        <button class="btn btn--dark" type="button" id="nextBtn">Lanjut</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Data Balita berhasil disimpan!</div>
+
+  <script>
+    (function () {
+      var currentStep = 1;
+      var TOTAL_STEPS = 5;
+
+      var openWizardBtn = document.getElementById('openWizardBtn');
+      var closeWizardBtn = document.getElementById('closeWizardBtn');
+      var wizardModal = document.getElementById('wizardModal');
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      var toast = document.getElementById('toast');
+
+      openWizardBtn.addEventListener('click', function () { wizardModal.classList.add('is-active'); goToStep(1); });
+      closeWizardBtn.addEventListener('click', function () { wizardModal.classList.remove('is-active'); });
+
+      function goToStep(step) {
+        currentStep = step;
+        document.querySelectorAll('.wizard-step').forEach(function (el) {
+          var s = parseInt(el.getAttribute('data-step'), 10);
+          el.classList.toggle('is-active', s === currentStep);
+          el.classList.toggle('is-complete', s < currentStep);
+        });
+        document.querySelectorAll('.wizard-panel').forEach(function (el) {
+          var p = parseInt(el.getAttribute('data-panel'), 10);
+          el.classList.toggle('is-active', p === currentStep);
+        });
+        prevBtn.style.display = currentStep === 1 ? 'none' : 'inline-flex';
+        nextBtn.textContent = currentStep === TOTAL_STEPS ? 'Simpan Data' : 'Lanjut';
+        if (currentStep === TOTAL_STEPS) buildSummary();
+      }
+
+      prevBtn.addEventListener('click', function () { if (currentStep > 1) goToStep(currentStep - 1); });
+      nextBtn.addEventListener('click', function () {
+        if (currentStep < TOTAL_STEPS) goToStep(currentStep + 1);
+        else saveData();
+      });
+
+      function val(id) { var el = document.getElementById(id); return el && el.value ? el.value.trim() : '—'; }
+
+      function detectGizi(tbCm) {
+        var tb = parseFloat(tbCm) || 0;
+        if (tb > 0 && tb < 90.0) return 'Stunting & Gizi Kurang';
+        return 'Normal / Gizi Baik';
+      }
+
+      function buildSummary() {
+        var st = detectGizi(val('tb'));
+        var grid = document.getElementById('summaryGrid');
+        grid.innerHTML =
+          '<div class="summary-block"><h4>Data Balita &amp; Orang Tua</h4><dl>' +
+            '<div class="summary-row"><dt>Nama Balita</dt><dd>' + val('namaBalita') + ' (' + val('jkl') + ')</dd></div>' +
+            '<div class="summary-row"><dt>Nama Orang Tua</dt><dd>' + val('namaIbu') + '</dd></div>' +
+            '<div class="summary-row"><dt>Posyandu</dt><dd>' + val('posyandu') + '</dd></div>' +
+          '</dl></div>' +
+          '<div class="summary-block"><h4>Pengukuran &amp; Intervensi</h4><dl>' +
+            '<div class="summary-row"><dt>Usia / BB / TB</dt><dd>' + val('usiaBulan') + ' Bln / ' + val('bb') + ' kg / ' + val('tb') + ' cm</dd></div>' +
+            '<div class="summary-row"><dt>Status Deteksi</dt><dd><strong>' + st + '</strong></dd></div>' +
+            '<div class="summary-row"><dt>Vitamin A / PMT</dt><dd>' + val('vitA') + ' / ' + val('pmt') + '</dd></div>' +
+          '</dl></div>';
+      }
+
+      function saveData() {
+        var namaBalita = val('namaBalita') !== '—' ? val('namaBalita') : 'Balita Baru';
+        var namaIbu = val('namaIbu') !== '—' ? val('namaIbu') : 'Orang Tua';
+        var nik = val('nikBalita') !== '—' ? val('nikBalita') : '3319010000000000';
+        var jkl = val('jkl') === 'Laki-laki' ? 'L' : 'P';
+        var kel = val('kelurahan');
+        var st = detectGizi(val('tb'));
+
+        var badge = st.indexOf('Stunting') !== -1
+          ? '<span class="badge badge--stunting">Stunting &amp; Gizi Kurang</span>'
+          : '<span class="badge badge--safe">Normal / Gizi Baik</span>';
+
+        var tbody = document.getElementById('balitaTableBody');
+        var count = tbody.querySelectorAll('tr').length + 1;
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td>' + count + '.</td>' +
+          '<td><p class="pair-name">' + namaBalita + ' (' + jkl + ')</p><p class="pair-kel">Usia: ' + val('usiaBulan') + ' Bln • Ibu: ' + namaIbu + ' • ' + kel + '</p></td>' +
+          '<td class="nik-cell">' + nik + '</td>' +
+          '<td>BB: ' + val('bb') + ' kg <br><small style="color:#4b5563;">TB: ' + val('tb') + ' cm | LiLA: ' + val('lila') + ' cm</small></td>' +
+          '<td>Vit A: ' + val('vitA') + ' <br><small style="color:#d97706;font-weight:600;">PMT: ' + val('pmt') + '</small></td>' +
+          '<td>' + badge + '</td>' +
+          '<td><div class="row-actions"><a href="halaman-detail-balita.html" class="btn btn--outline" style="padding:4px 10px;font-size:12px;">Detail</a><button class="icon-btn delete-btn" type="button"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iIzQ0NDY1MyI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJtMTQuNzQgOS0uMjzg4IDkuNDg4bS00LjkwNCAwTDEwLjI2IDltOS45NjgtMy4yMWMuMzQyLjA1Mi42ODIuMTA3IDEuMDIyLjE2Nm0tMS4wMjItLjE2NkwxODEuODUgMTkuNjc1QTIuMjUgMi4yNSAwIDAgMSAxOS42MDcgMjFIMC4zOTNhMi4yNSAyLjI1IDAgMCAxLTIuMjQyLTEuMzI1TDUuMjUgNS43OW0xMy41IDBhNDguMTA4IDQ4LjEwOCAwIDAgMC03LjQ3OC0uMzk3bS0xMiAuMzk3QTQ4LjA3NSA0OC4wNzUgMCAw IDEgNi45MzggNC42MTVtMTIgMEExOC42OTggMTguNjk4IDAgMCAw IDE1Ljc1IDQuNTVNMTUuNzUgNC41NVY0LjI1QTIuMjUgMi4yNSAwIDAgMCAxMy41IDJoLTNhMi4yNSAyLjI1IDAgMCAwLTIuMjUgMi4yNVY4LjU1bTcgMGgtNzAiLz48L3N2Zz4=" alt=""></button></div></td>';
+
+        tbody.prepend(tr);
+
+        var totalEl = document.getElementById('totalTerdaftar');
+        totalEl.textContent = (parseInt(totalEl.textContent.replace(/\./g, ''), 10) + 1).toLocaleString('id-ID');
+
+        wizardModal.classList.remove('is-active');
+        toast.classList.add('is-visible');
+        setTimeout(function () { toast.classList.remove('is-visible'); }, 3000);
+      }
+
+      document.getElementById('searchInput').addEventListener('keyup', filterTable);
+      document.getElementById('filterKelurahan').addEventListener('change', filterTable);
+      document.getElementById('filterStatusGizi').addEventListener('change', filterTable);
+
+      function filterTable() {
+        var query = document.getElementById('searchInput').value.toLowerCase();
+        var kel = document.getElementById('filterKelurahan').value;
+        var st = document.getElementById('filterStatusGizi').value;
+        var rows = document.querySelectorAll('#balitaTableBody tr');
+        rows.forEach(function (row) {
+          var text = row.textContent.toLowerCase();
+          var matchQuery = !query || text.indexOf(query) !== -1;
+          var matchKel = kel === 'Semua' || text.indexOf(kel.toLowerCase()) !== -1;
+          var matchSt = st === 'Semua' || text.indexOf(st.toLowerCase()) !== -1;
+          row.style.display = (matchQuery && matchKel && matchSt) ? '' : 'none';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
